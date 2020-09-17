@@ -1,7 +1,7 @@
-import KBTabBar from './layout/KBTabBar'
-import KBHeader from './layout/KBHeader'
+import KBTabBar from './common/KBTabBar'
+import CartBtn from './common/CartBtn'
 
 export  {
     KBTabBar,
-    KBHeader
+    CartBtn
 }

@@ -3,11 +3,9 @@ import loadable from '@loadable/component'
 import { Icon } from 'antd-mobile';
 
 const Home = loadable(()=>import('./home/Home'))
-const GoodList = loadable(()=>import('./good/GoodList'))
-const Find = loadable(()=>import('./find/Find'))
+const Good = loadable(()=>import('./good/Good'))
+const Cart = loadable(()=>import('./Cart/Cart'))
 const My = loadable(()=>import('./my/My'))
-const Details = loadable(()=>import('./details/Details'))
-const CatList = loadable(()=>import('./catlist/CatList'))
 
  const routes = [
     {
@@ -25,27 +23,28 @@ const CatList = loadable(()=>import('./catlist/CatList'))
         icon:<Icon type='cross-circle'></Icon>,
         selectedIcon:<Icon type='cross-circle'></Icon>,
         path:'/good',
-        component:GoodList,
+        component:Good,
         children:[
-            {
-                id:11,
-                path:'/good/details/:id',
-                component:Details
-            },
-            {
-                id:12,
-                path:'/good/catlist',
-                component:CatList
-            }
+            //二级页面
+            // {
+            //     id:11,
+            //     path:'/good/details/:id',
+            //     component:Details
+            // },
+            // {
+            //     id:12,
+            //     path:'/good/catlist',
+            //     component:CatList
+            // }
         ]
     },
     {
         id:3,
-        title:'Friend',
+        title:'Cart',
         icon:<Icon type='check-circle' />,
         selectedIcon:<Icon type='check-circle' />,
-        path:'/find',
-        component:Find
+        path:'/cart',
+        component:Cart
 
     },
     {

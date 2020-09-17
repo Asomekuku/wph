@@ -1,6 +1,5 @@
 import {
     GET_GOOD_LIST,
-    GOOD_CHILD_UPD
 } from '../actionType'
 
 import { fetchgoodlist } from '@/utils/api'
@@ -21,13 +20,5 @@ export function getgoodlist(params){
                 payload:[]
             })
         })
-    }
-}
-
-export function goodchildupd (payload){
-    
-    return {
-        type:GOOD_CHILD_UPD,
-        payload
     }
 }

@@ -1,7 +1,6 @@
 import React from 'react'
-import './home.scss'
+import './good.scss'
 
-import { KBTabBar,CartBtn } from '@/components/'
 
 
 //引入这个高阶函数
@@ -21,7 +20,7 @@ function mapActionToProps(dispatch){
     }
 }
 
-class Home extends React.Component{
+class Good extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -34,13 +33,11 @@ class Home extends React.Component{
     }
     render(){
         return (
-            <div className="home">
-                <h1>home</h1>
-                <KBTabBar></KBTabBar>
-                <CartBtn></CartBtn>
+            <div className="good">
+                <h1>good</h1>
             </div>
         )
     }
 }
 
-export default connect(mapStateToProps,mapActionToProps)(Home)
+export default connect(mapStateToProps,mapActionToProps)(Good)
