@@ -1,0 +1,34 @@
+* {
+  touch-action: pan-y;
+}
+body,html,#root{
+  width: 100%;
+  height: 100%;
+}
+h1,h2,h3,h4,h5,h6{
+  font-size:16px;
+  font-weight:normal; /*清除加粗*/
+}
+ul,ol,li{
+  list-style:none; /*去掉列表符号*/
+}
+b,strong{
+  font-weight:normal; /*清除加粗*/
+}
+em,i{
+  font-style: normal; /*倾斜清除*/
+}
+a,u{
+  text-decoration: none; /*去掉下划线*/
+}
+img{
+  border:0; /*清除图片在有超链接的时候，存在一个蓝色的边框*/
+  display: block;
+}
+input{
+  outline:none;/*清除INPUT  聚焦时的 蓝色边框*/
+  display: block;
+}
+.App {
+  text-align: center;
+}
