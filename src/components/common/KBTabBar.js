@@ -11,7 +11,7 @@ class KBTabBar extends React.Component{
             <div className="kb-tabbar">
                 {/* 用户 */}
                 <div onClick={()=>this.props.history.push('/my')}>
-                    <i class="iconfont icon-yonghu"></i>
+                    <i className="iconfont icon-yonghu"></i>
                 </div>
                 {/* 搜索 */}
                 <div>
@@ -19,7 +19,7 @@ class KBTabBar extends React.Component{
                 </div>
                 {/* 分类 */}
                 <div onClick={()=>this.props.history.push('/good')}>
-                    <i class="iconfont icon-fenlei"></i>
+                    <i className="iconfont icon-fenlei"></i>
                 </div>
             </div>
         )

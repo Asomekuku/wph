@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let baseURL = 'https://www.linweiqin.cn/api/public/v1'
+let baseURL = 'http://localhost:8080/vips-mobile/rest'
 const instance = axios.create({
     baseURL: baseURL,
     timeout: 7000,
@@ -11,6 +11,7 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
     // console.log('请求拦截',config)
+    console.log('请求拦截',config)
     return config;
   }, function (error) {
     // Do something with request error
