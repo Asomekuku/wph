@@ -1,0 +1,29 @@
+.login{
+    
+    .login_logo{
+        &>img{
+            width: 100%;
+            height: 100%;
+        }
+        &>span{
+            display: block;
+            position: absolute;
+            right: 8px;
+            top: 9px;
+            width: 30px;
+            height: 30px;
+          
+        } 
+    }
+    .img{
+        margin: auto;
+        padding-top: 50px;
+    }
+    .yz{
+        display: flex;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      
+    }
+}
