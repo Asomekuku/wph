@@ -1,6 +1,10 @@
 import axios from 'axios'
 
+<<<<<<< HEAD
 let baseURL = 'http://www.linweiqin.cn/api/public/v1'
+=======
+let baseURL = 'http://localhost:8080/vips-mobile/rest'
+>>>>>>> 82cbf572d503545be97d649f9998736b846621ec
 const instance = axios.create({
     baseURL: baseURL,
     timeout: 7000,
@@ -11,7 +15,11 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
     // console.log('请求拦截',config)
+<<<<<<< HEAD
     config.data["xmuuid"]='XMGUEST-CCE32590-FBA7-11EA-BA56-B1225B60F5CE'
+=======
+    console.log('请求拦截',config)
+>>>>>>> 82cbf572d503545be97d649f9998736b846621ec
     return config;
   }, function (error) {
     // Do something with request error

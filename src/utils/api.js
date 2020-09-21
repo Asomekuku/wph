@@ -1,49 +1,20 @@
 import axios from './fetch'
 import fetch from 'axios'
+// import axios from './fetch'
+import abc from 'axios'
+
 //获取轮播图
 export function fetchImg(params){
-    return axios({
-        url:'/home/swiperdata',
-        method:'GET',
-        params
-    })
-}
-
-//获取导航分类
-export function fetchCatItems(params){
-    return axios({
-        url:'home/catitems',
-        methods:'GET',
-        params
-    })
-}
-
-//获取专区图片
-export function fetchfloordata(params){
-    return axios({
-        url:'/home/floordata',
-        methods:'GET',
-        params
-    })
-}
-
-//获取good商品列表分类
-export function fetchgoodlist(params){
-    return axios({
-        url:'/categories',
-        methods:'GET',
-        params
-    })
-}
-
-//
-export function abc(params){
-    return fetch({
+    return abc({
         url:'http://api.tbk.dingdanxia.com/vip/goodsList',
         method:'GET',
         params
-    })  
-} 
+    })
+}
+
+
+
+
 //短信验证码
 export function getMobileCode(params){
     return fetch({
@@ -72,7 +43,4 @@ export function loginCheck(data){
 
 export default {
     fetchImg,
-    fetchCatItems,
-    fetchfloordata,
-    fetchgoodlist
 }
