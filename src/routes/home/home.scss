@@ -1,4 +1,130 @@
-.home{
+@mixin flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin maunActive {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 0px;
+    width: 25%;
+    height: 1.066667rem;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+    img {
+        width: 0.666667rem;
+        height: 0.666667rem;
+    }
+
+    span {
+        width: 1.4rem;
+        height: 1.066667rem;
+    }
+}
+
+.home {
     overflow: hidden;
-    margin-top: 1.066667rem;
+
+    .homeNav {
+        @include flex();
+        height: 0.8rem;
+        padding: 0px 0.266667rem;
+        position: sticky;
+        top: 1.8rem;
+        left: 0px;
+
+        .homeNav-item {
+            box-sizing: border-box;
+            height: 0.8rem;
+            margin: 0px 0.2rem;
+            font-size: 0.213333rem;
+            line-height: 0.8rem;
+            color: #666666;
+        }
+
+        .homeNav-item-active {
+            box-sizing: border-box;
+            height: 0.8rem;
+            line-height: 0.8rem;
+            color: #D34BA8;
+            border-bottom: 0.08rem solid #D34BA8;
+        }
+    }
+
+    .homeMaun {
+        position: relative;
+        background: #fff;
+        top:-1.8rem;
+        .homeMaun-icon {
+            position: absolute;
+            right: 0;
+            top: 0.8rem;
+            background: #F5F5F9;
+            text-align: center;
+            line-height: 1.5rem;
+            width: 1.066667rem;
+            height: 1.066667rem;
+        }
+
+        .homeMaun-content {
+
+            .homeMaun-content-top {
+                @include flex();
+                padding: 0px 0.266667rem;
+
+                p {}
+
+                icon {}
+            }
+
+            .homeMaun-content-nav {
+                @include flex();
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .Maun-item-active {
+                @include maunActive();
+                color: #D34BA8;
+
+            }
+            .Maun-item-active:last-child {
+                border: none;
+            }
+            .Maun-item {
+                @include maunActive();
+            }
+
+            .Maun-item:last-child {
+                border: none;
+            }
+
+            .homeMaun-content-bottom {
+                padding: 0px 0.3rem;
+
+                .homeMaun-bottom-list {
+                    @include flex();
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: start;
+
+                    span {
+                        width: 1.4rem;
+                        font-size: 0.213333rem;
+                        height: 0.48rem;
+                        line-height: 0.48rem;
+                        margin-right: 0.25rem;
+                        margin-bottom: 0.2rem;
+                        padding: 0.266667rem 0.3rem;
+                        text-align: center;
+                        background: #F3F4F5;
+                    }
+                }
+            }
+        }
+    }
 }

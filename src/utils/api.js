@@ -1,5 +1,4 @@
 import axios from './fetch'
-
 //获取轮播图
 export function fetchImg(params){
     return axios({
@@ -12,12 +11,19 @@ export function fetchImg(params){
 //获取导航分类
 export function fetchCatItems(params){
     return axios({
-        url:'home/catitems',
+        url:'/operation/menu/v1',
         methods:'GET',
         params
     })
 }
-
+//获取菜单栏
+export function fetchCatMaun(params){
+    return axios({
+        url:'/operation/draw-menu/v5',
+        methods:'GET',
+        params
+    })
+}
 //获取专区图片
 export function fetchfloordata(params){
     return axios({

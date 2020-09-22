@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import './kbtabbar.scss'
+import styles from './kbtabbar.module.scss'
 
 
 class KBTabBar extends React.Component{
@@ -8,10 +8,10 @@ class KBTabBar extends React.Component{
     render(){
         // console.log(this.props)
         return (
-            <div className="kb-tabbar">
+            <div className={styles.kbTabbar}>
                 {/* 用户 */}
                 <div onClick={()=>this.props.history.push('/my')}>
-                    <i class="iconfont icon-yonghu"></i>
+                    <i className="iconfont icon-yonghu"></i>
                 </div>
                 {/* 搜索 */}
                 <div>
@@ -19,7 +19,7 @@ class KBTabBar extends React.Component{
                 </div>
                 {/* 分类 */}
                 <div onClick={()=>this.props.history.push('/good')}>
-                    <i class="iconfont icon-fenlei"></i>
+                    <i className="iconfont icon-fenlei"></i>
                 </div>
             </div>
         )

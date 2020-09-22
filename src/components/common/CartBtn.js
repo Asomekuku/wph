@@ -11,7 +11,7 @@ class CartBtn extends React.Component{
             <div className="cart-btn">
                 {/* 去购物车按钮 */}
                 <div onClick={()=>this.props.history.push('/cart')}>
-                    <i class="iconfont icon-gouwuche"></i>
+                    <i className="iconfont icon-gouwuche"></i>
                 </div>
             </div>
         )

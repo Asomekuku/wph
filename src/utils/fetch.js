@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let baseURL = 'https://www.linweiqin.cn/api/public/v1'
+let baseURL="/vips-mobile/rest"
 const instance = axios.create({
     baseURL: baseURL,
     timeout: 7000,

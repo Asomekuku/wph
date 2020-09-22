@@ -1,0 +1,39 @@
+.kbTabbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    height: 1.066667rem;
+    background-color: pink;
+    &>div:nth-child(1){
+        width: 1.066667rem;
+        height: 1.066667rem;
+        text-align: center;
+        line-height: 1.066667rem;
+        &>i{
+            font-size: 0.666667rem;
+        }
+    }
+    &>div:nth-child(2){
+        box-sizing: border-box;
+        padding-left: 20px;
+        width: 290px;
+        height: 30px;
+        background: rgb(250, 244, 233);
+        font-size: 14px;
+        text-align: left;
+        line-height: 30px;
+        border-radius: 18px;  
+        margin: auto 0;
+        color: gray;  
+    }
+    &>div:nth-child(3){
+        width: 1.066667rem;
+        height: 1.066667rem;
+        text-align: center;
+        line-height: 1.066667rem;
+        &>i{
+            font-size: 0.666667rem;
+        }
+    }
+}
