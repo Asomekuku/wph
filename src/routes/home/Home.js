@@ -6,7 +6,8 @@ import { HTabBar, CartBtn } from "@/components/";
 //引入这个高阶函数
 import { connect } from "react-redux";
 // 引入antd模块
-import { Icon,} from "antd-mobile";
+import { Icon } from "antd-mobile";
+
 //共享state中的数据，可以用this.props进行访问
 function mapStateToProps(store) {
   return {
@@ -28,7 +29,7 @@ class Home extends React.Component {
       active: 0,
       MaunShow: true,
     };
-    this.params={
+    this.params = {
       app_name: "shop_wap",
       app_version: 4.0,
       api_key: "8cec5243ade04ed3a02c5972bcda0d3f",
@@ -41,7 +42,7 @@ class Home extends React.Component {
       standby_id: "nature",
       mvip: true,
       _: 1600699471,
-    }
+    };
   }
   // 切换标题栏的高亮样式
   activeClick = (i) => {
@@ -52,9 +53,9 @@ class Home extends React.Component {
   // 菜单显示页面弹窗
   HomeShowClick = (params) => {
     this.setState({
-      MaunShow:false,
+      MaunShow: false,
     });
-    this.props.getMaunTitle(this.params)
+    this.props.getMaunTitle(this.params);
   };
   // 菜单隐藏页面弹窗
   HomeHideClick = (params) => {
@@ -69,7 +70,7 @@ class Home extends React.Component {
   }
   render() {
     console.log(this.props.maunList);
-    let { navList,maunList } = this.props;
+    let { navList, maunList } = this.props;
     return (
       <div className="home">
         {/* 广告栏 */}
@@ -104,9 +105,17 @@ class Home extends React.Component {
                 <Icon type="up" onClick={this.HomeHideClick} />
               </div>
               <div className="homeMaun-content-nav">
-                {navList.map((v,i) => {
+                {navList.map((v, i) => {
                   return (
-                    <div className={this.state.active === i ?"Maun-item-active":"Maun-item"} key={v.id}  onClick={this.activeClick.bind(this, i)}>
+                    <div
+                      className={
+                        this.state.active === i
+                          ? "Maun-item-active"
+                          : "Maun-item"
+                      }
+                      key={v.id}
+                      onClick={this.activeClick.bind(this, i)}
+                    >
                       <img src={v.default_icon} alt="" />
                       <span>{v.name}</span>
                     </div>
@@ -116,13 +125,12 @@ class Home extends React.Component {
               <div className="homeMaun-content-bottom">
                 <p>更多推荐</p>
                 <div className="homeMaun-bottom-list">
-                  {maunList.map(v=>(
+                  {maunList.map((v) => (
                     <span key={v.id}>{v.name}</span>
                   ))}
                 </div>
               </div>
             </div>
-      
           )}
         </div>
       </div>

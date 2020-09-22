@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-let baseURL="/vips-mobile/rest"
+
+let baseURL = 'http://localhost:8080/vips-mobile/rest'
 const instance = axios.create({
     baseURL: baseURL,
     timeout: 7000,
@@ -11,6 +12,8 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
     // console.log('请求拦截',config)
+    config.data["xmuuid"]='XMGUEST-CCE32590-FBA7-11EA-BA56-B1225B60F5CE'
+    console.log('请求拦截',config)
     return config;
   }, function (error) {
     // Do something with request error

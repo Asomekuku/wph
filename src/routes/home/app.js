@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { NavBar, Icon } from "antd-mobile";
 import "./app.scss"
-import img from "../../assets/img/appD.png"
-import img1 from "../../assets/img/azD.png"
-import img2 from "../../assets/img/az2D.png"
-import img3 from "../../assets/img/wD.png"
+import img from "../../assets/image/appD.png"
+import img1 from "../../assets/image/azD.png"
+import img2 from "../../assets/image/az2D.png"
+import img3 from "../../assets/image/wD.png"
 
 class app extends Component {
   render() {
