@@ -1,0 +1,19 @@
+.kb-iocation{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background: rgb(101,106,132);
+    &>div:nth-child(1){
+        margin-left: 20px;
+        font-size: 18px;
+        line-height: 50px;
+        color: #fff;
+    }
+    &>div:nth-child(2){
+        margin-right: 20px;
+        line-height: 80px;
+        color: #fff;
+
+    }
+    
+}

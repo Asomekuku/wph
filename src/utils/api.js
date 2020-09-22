@@ -1,12 +1,11 @@
 import axios from './fetch'
 import fetch from 'axios'
-// import axios from './fetch'
-import abc from 'axios'
 
-//获取轮播图
-export function fetchImg(params){
-    return abc({
-        url:'http://api.tbk.dingdanxia.com/vip/goodsList',
+
+// 获取商品详情
+export function axiosGoodDetails(params){
+    return fetch({
+        url:'http://api.tbk.dingdanxia.com/vip/item_info',
         method:'GET',
         params
     })
@@ -64,5 +63,5 @@ export function loginCheck(data){
 
 
 export default {
-    fetchImg,
+    axiosGoodDetails
 }
