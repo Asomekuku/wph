@@ -9,6 +9,7 @@ export function getHomeSlideshow(params) {
     fetchCatItems(params)
       .then((res) => {
         //第二次dispatch
+        console.log(res.data.top_menus)
         dispatch({
           type: GET_HOME_SLIDESHOW,
           payload: res.data.top_menus,

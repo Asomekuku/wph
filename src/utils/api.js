@@ -1,6 +1,24 @@
 import axios from './fetch'
 import fetch from 'axios'
 
+//获取分类页面
+export function getClassify(params){
+  return axios({
+    url:'http://localhost:8080/api/category/category/getSellingCategorys',
+    method:'GET',
+    params
+  })
+}
+
+//获取列表详情
+export function getClassDetail(params){
+  return axios({
+    url:'http://localhost:8080/dp/getData',
+    method:'GET',
+    params
+  })
+}
+
 
 // 获取商品详情
 export function axiosGoodDetails(params){
@@ -14,7 +32,7 @@ export function axiosGoodDetails(params){
 //获取导航分类
 export function fetchCatItems(params){
     return axios({
-        url:'/operation/menu/v1',
+        url:'http://localhost:8080/vips-mobile/rest/operation/menu/v1',
         methods:'GET',
         params
     })
@@ -22,7 +40,7 @@ export function fetchCatItems(params){
 //获取菜单栏
 export function fetchCatMaun(params){
     return axios({
-        url:'/operation/draw-menu/v5',
+        url:'http://localhost:8080/vips-mobile/rest/operation/draw-menu/v5',
         methods:'GET',
         params
     })
@@ -30,7 +48,7 @@ export function fetchCatMaun(params){
 //获取专区图片
 export function fetchfloordata(params){
     return axios({
-        url:'/home/floordata',
+        url:'http://localhost:8080/vips-mobile/rest/home/floordata',
         methods:'GET',
         params
 
@@ -68,6 +86,8 @@ export function logout(data){
         data
     })
 }
+
+
 
 
 export default {
