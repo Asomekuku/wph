@@ -1,0 +1,76 @@
+.kk_my{
+    background-color: #FFFFFF;
+    height: 100%;
+}
+.my_top{
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:0.533333rem;
+    padding: 0 0.266667rem;
+}
+.my_vip{
+    width: 100%;
+    height: 160px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    &>img{
+        width: 100%;
+    }
+    &>span{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+//登录注册
+.my_vip2{
+    width: 100%;
+    height: 160px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &>span{
+        display: block;
+        width: 60px;
+        text-align: center;
+        height: max-content;
+    }
+    &>span:nth-child(1){
+        border-right: 1px solid #000;
+    }
+}
+//待收货
+.kk_take{
+    width: 100%;
+    height: 83px;
+    // background-color:red;
+    display: flex;
+    &>div{
+        flex: 1;
+        border-bottom: 1px solid #000000;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        &>span{
+            font-size: 0.666667rem;
+        }
+        
+    }
+}
+//退出
+.out{
+    height: 1.333333rem;
+    text-align: center;
+    line-height: 1.333333rem;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}

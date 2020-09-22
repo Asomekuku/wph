@@ -13,6 +13,7 @@ export default function homeReducer(state = initState, action) {
   switch (action.type) {
     case GET_HOME_SLIDESHOW:
       newState.navList = action.payload;
+      console.log(action.payload)
       return newState;
     case GET_HOME_MAUN:
       newState.maunList = action.payload;

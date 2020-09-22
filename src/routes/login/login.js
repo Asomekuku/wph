@@ -22,6 +22,12 @@ import {getMobileCode , createUser , loginCheck} from '@/utils/api'
         console.log(this.props.history)
         this.props.history.push('/home')
     }
+    //挂载完成
+    componentDidMount(){
+
+        this.props.match.params.regiSign === 'regi' ? this.setState({cut:false}) : this.setState({cut:true})
+
+    }
     //改变bol登录注册,密码登录
     iscut(){
         let {cut} = this.state

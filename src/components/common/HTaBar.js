@@ -1,10 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./HTabBar.scss";
+
+
 class HTabBar extends React.Component {
   state = {
     LogoShow: true,
-    token:false
+    token:true
   };
 // 关闭广告栏
   CloseLogo = (params) => {
@@ -36,7 +38,7 @@ class HTabBar extends React.Component {
         )}
         <div className="kb-tabbar">
           {/* 用户 */}
-          <div onClick={() => this.props.history.push("/my")}>
+          <div onClick={() => this.props.history.push("/login")}>
             {this.state.token?<i className="iconfont icon-yonghu"></i>:<div>登录</div>}
           </div>
           {/* 搜索 */}
