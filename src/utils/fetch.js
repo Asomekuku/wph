@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-let baseURL = 'https://www.linweiqin.cn/api/public/v1'
 const instance = axios.create({
-    baseURL: baseURL,
     timeout: 7000,
     headers: {}
 });
@@ -23,7 +21,7 @@ instance.interceptors.response.use(function (response) {
     // Do something with response data
     if(response.status===200){
         if(response.data){
-            return response.data;
+            return response.data.data;
         }
     }
     
