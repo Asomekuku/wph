@@ -21,7 +21,7 @@ instance.interceptors.response.use(function (response) {
     // Do something with response data
     if(response.status===200){
         if(response.data){
-            return response.data.data;
+            return response.data;
         }
     }
     

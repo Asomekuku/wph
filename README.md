@@ -39,3 +39,6 @@ index.js:路口文件
         npm install react-redux -S
         npm install redux-thunk -S                  中间件
         
+###  技术难点
+1.home页面跨域一直报错，启动项目一开就蹦页面，去网上搜了下，说是10代处理器的问题
+解决方案：安装14版本以上的node,里面有一个node.exe能解决这一问题

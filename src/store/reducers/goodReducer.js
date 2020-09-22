@@ -15,6 +15,7 @@ export default function goodReducer(state=initState,action){
 
     switch (action.type) {
         case GET_GOOD_LIST:
+          console.log(action)
             newState.goodInitList = action.payload.current_node.children
             newState.goodChooseList = action.payload.cate_lv1
             return newState;

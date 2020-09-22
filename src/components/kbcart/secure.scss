@@ -1,0 +1,20 @@
+.kb-secure{
+    background: rgb(232,230,234);
+    overflow: hidden;
+    height: 40px;
+    &>div{
+        line-height: 40px;
+        margin-left: 20px;
+        float: left;
+        &>i{
+            font-size: 24px;
+        }
+    }
+    &>p{
+        line-height: 40px;
+
+        float: left;;
+        margin: 0;
+        margin-left: 10px;
+    }
+}

@@ -13,7 +13,7 @@ export function getgoodlist(params){
         console.log('res',res)
         dispatch({
             type:GET_GOOD_LIST,
-            payload:res
+            payload:res.data
         })
       }).catch(()=>{
         dispatch({
@@ -30,7 +30,7 @@ export function getDetailList(params){
       console.log('detail',res)
       dispatch({
         type:GOOD_CHILD_UPD,
-        payload:res
+        payload:res.data
       })
     }).catch(()=>{
       dispatch({

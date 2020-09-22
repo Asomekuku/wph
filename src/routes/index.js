@@ -6,7 +6,7 @@ const Home = loadable(()=>import('./home/Home'))
 const Good = loadable(()=>import('./good/Good'))
 const Cart = loadable(()=>import('./Cart/Cart'))
 const My = loadable(()=>import('./my/My'))
-
+const Login = loadable(()=>import('./login/login'))
  const routes = [
     {
         id:1,
@@ -54,6 +54,12 @@ const My = loadable(()=>import('./my/My'))
         selectedIcon:<Icon type='cross-circle'></Icon>,
         path:'/my',
         component:My
+    },
+    {
+        id:123,
+        path:'/login',
+        component:Login
+
     }
 ]
 

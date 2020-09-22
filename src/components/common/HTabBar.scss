@@ -1,0 +1,82 @@
+.HTab {
+    .banner{
+        position: relative;
+        top:0;
+        left:0px;
+        height:1.8rem;
+        background: url("https://h2.vipstatic.com/ms2-m.vipstatic.com/static_v2/img/download-banner.9584d2a.png") no-repeat 0px 0px/100% 100% ;
+        .bannerClose{
+            position: absolute;
+            top:0;
+            left:0;
+            font-size:0.8rem;
+            width:0.5rem;
+            height:0.5rem;
+            line-height: 0.5rem;
+            text-align: center;
+            color:rgba(255,255,255,0.3)
+        }
+        .TabLogo{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            top:0.533333rem;
+            left:2.666667rem;
+            p{
+                margin: 0rem;
+                color:rgba(255,255,255,0.8);
+                margin-bottom:0.066667rem;  
+            }
+            .HLogo{
+                font-size: 0.4rem;
+            }
+            .Logo{
+                font-size: 0.213333rem;
+            }
+        }
+    }
+    .kb-tabbar {
+        position: sticky;
+        top:0px;
+        width: 100%;
+        display: flex;
+        height: 1.066667rem;
+        &>div:nth-child(1) {
+            width:10%;
+            height: 1.066667rem;
+            text-align: center;
+            line-height: 1.066667rem;
+
+            &>i {
+                font-size: 0.666667rem;
+            }
+        }
+
+        &>div:nth-child(2) {
+            box-sizing: border-box;
+            padding-left: 20px;
+            width:75%;
+            height: 30px;
+            background: #F3F4F5;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            text-align: left;
+            line-height: 30px;
+            border-radius: 18px;
+            margin: auto 0;
+            color: #98989F;
+        }
+
+        &>div:nth-child(3) {
+            width:10%;
+            height: 1.066667rem;
+            text-align: center;
+            line-height: 1.066667rem;
+
+            &>i {
+                font-size: 0.666667rem;
+            }
+        }
+    }
+}

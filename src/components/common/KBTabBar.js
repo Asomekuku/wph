@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import './kbtabbar.scss'
+import styles from './kbtabbar.module.scss'
 
 
 class KBTabBar extends React.Component{
@@ -8,7 +8,7 @@ class KBTabBar extends React.Component{
     render(){
         // console.log(this.props)
         return (
-            <div className="kb-tabbar">
+            <div className={styles.kbTabbar}>
                 {/* 用户 */}
                 <div onClick={()=>this.props.history.push('/my')}>
                     <i className="iconfont icon-yonghu"></i>
