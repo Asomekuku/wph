@@ -7,12 +7,9 @@ const instance = axios.create({
 
 // 请求拦截器
 instance.interceptors.request.use(function (config) {
-<<<<<<< HEAD
    
-=======
     // Do something before request is sent
     // console.log('请求拦截',config)
->>>>>>> a45e23bc1a86b7a5c7ecee365adf3225ea9397d5
     return config;
   }, function (error) {
     // Do something with request error
