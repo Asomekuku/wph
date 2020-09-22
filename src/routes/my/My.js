@@ -48,11 +48,11 @@ const Item = List.Item;
     //退出
     out(){
         let token =JSON.parse(localStorage.getItem('token'))
-        console.log(token)
+       
         logout({
             oauth_token:token
         }).then(res=>{
-            console.log(res)
+          
             if(res.data.msg==='退出成功'){
                 localStorage.removeItem('token')
                 localStorage.removeItem('username')
