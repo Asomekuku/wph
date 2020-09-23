@@ -39,7 +39,7 @@ class Cart extends React.Component{
                 { value: 1,check:false,num:500, label: '优惠500元' },
                 { value: 2,check:false,num:99999999999999, label: '不要钱' },
             ],
-            discount_money:0,
+    
             bol:true
         }
     }
@@ -57,11 +57,11 @@ class Cart extends React.Component{
             console.log('未登入')
         }
 
-        setInterval(()=>{
-            this.props.time()
-            // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
-            this.setState({bol:false})
-        },1000)
+        // setInterval(()=>{
+        //     this.props.time()
+        //     // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
+        //     this.setState({bol:false})
+        // },1000)
         this.setState({isTime:true})
         
         
@@ -103,15 +103,17 @@ class Cart extends React.Component{
         this.props.history.push('/login/'+123)
     }
     //计算总价
+    
     count(){
         let num=0
+      
         this.props.goods.map(ele=>{
             num+=parseInt(ele.vip_price)*ele.good_num
             return null
         })
-        // this.setState({discount_money:num})
         return num
     }
+   
     //商品增加与减少
     dian(bol,idx){
         if(bol){
@@ -171,31 +173,20 @@ class Cart extends React.Component{
             money+=ele.num
             }
         })
-        let num=this.count()-money
-      this.setState({discount_money:num},()=>{
-          if(this.state.discount_money<0){
-            this.setState({discount_money:0})
-          }
-      })
-    }
-    shouldComponentUpdate(){
-        // setInterval(()=>{
-        //     this.props.time()
-        //     return false
-        //     // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
-        // },1000)
-        // return true
-        if(!this.state.bol){
-            return false
+
+        //判断是否使用优惠券
+        if(this.count()-money<0){
+            money=0
         }else{
-            return true
+            money=this.count()-money
         }
+        return money
     }
+
     render(){
         let { user,list_data,discount_money } =this.state
         let { goods } = this.props
         // console.log('状态管理goods',goods)
-        console.log(this.props.goods)
         
         return (
             <div className="cart">
@@ -267,14 +258,14 @@ class Cart extends React.Component{
                         
                         <div>
                             <span>订单金额</span>
-                            <em>￥{this.count()}</em>
+                            <em>￥{this.UseCoupons()}</em>
                         </div>
                         <div>
                             <span>商品总金额</span>
-                            <em>￥{this.count()}</em>
+                            <em>￥{this.UseCoupons()}</em>
                         </div>
                         <div>
-                            <span>还需支付：<em>￥{discount_money}</em></span>
+                            <span>还需支付：<em>￥{this.UseCoupons()}</em></span>
                             <div>在线支付</div>
                         </div>
                     </>)
