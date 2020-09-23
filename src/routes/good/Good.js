@@ -1,7 +1,7 @@
 import React from 'react'
 import './good.scss'
 import { SearchBar } from 'antd-mobile';
-import {getgoodlist,getDetailList} from '../../store/actions/goodAction'
+import {getgoodlist} from '../../store/actions/goodAction'
 
 //引入这个高阶函数
 import { connect } from 'react-redux'
@@ -12,7 +12,6 @@ function mapStateToProps(store){
     return{
       goodInitList:store.good.goodInitList,
       goodChooseList:store.good.goodChooseList,
-      goodDetailList:store.good.goodDetailList,
     }
 }
 //把action生成器方法，映射到props上面
@@ -20,9 +19,6 @@ function mapActionToProps(dispatch){
     return {
       //商品分类
       goodInit:(params)=>dispatch(getgoodlist(params)),
-
-      //商品详情列表
-      detailInit:(params)=>dispatch(getDetailList(params))
     }
 }
 
@@ -80,37 +76,10 @@ class Good extends React.Component{
     }
     //点击跳转相关列表页
     handleDetail(group_id){
-      console.log(group_id)
-      let params = {
-        pageId: 10000287,
-        componentId: 2970,
-        pageSize: 30,
-        abtId: 2554,
-        app_name: 'shop_wap',
-        app_version: 1.0,
-        warehouse: 'VIP_NH',
-        fdc_area_id: 104104103,
-        area_id: 104104,
-        api_key: '8cec5243ade04ed3a02c5972bcda0d3f',
-        mars_cid: '1600332715541_5dd293d8cb51090865f1282cbdae2e3e',
-        total: 300,
-        ruleId: group_id,
-        dataSourceScene: 'MST_RULE_PRODUCT_RANK',
-        serviceType: 1,
-        goodsQueryFields:' goodsCorner,goodsSellTag,goodsStockTag,query4GoodsFav,query4Comment,goodsFallingTag,goodsAtmosphereTag,goodsSellLabel',
-        goodsFilterParamsJson: {},
-        landingIdList: '',
-        topSalesList: '',
-        isWhiteListStyleId: true,
-        time: 0,
-        is_front: 1,
-        mobile_platform: 2,
-      }
-      this.props.detailInit(params)
+      this.props.history.push('/good/goodlist/'+group_id)
     }
     render(){
       let { goodInitList, goodChooseList} = this.props
-      console.log(goodInitList)
         return (
             <div className="good">
               <div className="good-search">

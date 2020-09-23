@@ -19,8 +19,16 @@ export function getClassDetail(params){
   })
 }
 
+//获取商品详情 Ming
+export function getDetails(params){
+  return fetch({
+    url:'http://localhost:8080/vips-mobile/rest/shopping/wap/product/detail/v5',
+    method:'GET',
+    params
+  })
+}
 
-// 获取商品详情
+// 获取商品详情 monkey
 export function axiosGoodDetails(params){
     return fetch({
         url:'http://api.tbk.dingdanxia.com/vip/item_info',

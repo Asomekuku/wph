@@ -18,6 +18,13 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
         createProxyMiddleware({
           target: "https://mapi-rp.vip.com",
           changeOrigin: true,
-        }))
+        })),
+        app.use(
+          "/vips-mobile",
+          createProxyMiddleware({
+            target:"https://mapi.vip.com",
+            changeOrigin:true,
+          })
+        )
     };
 

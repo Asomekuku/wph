@@ -1,0 +1,80 @@
+.goodlist{
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+  .product-item-inner{
+    width: 176px;
+    height: 278px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    float: left;
+    .product-img-box{
+      width: 176px;
+      height: 176px;
+      &>img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .product-info{
+      box-sizing: border-box;
+      width: 176px;
+      height: 102px;
+      padding: 0 0.05rem;
+      background: #fff;
+      .product-price{
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        .tag{
+          background: linear-gradient(90deg,#f03867,#cb78dc);font-size: 0.26666666666666666rem;
+          height: 0.39999999999999997rem;
+          line-height: 0.39999999999999997rem;
+          padding: 0 0.10666666666666666rem;
+          color: #fff;
+          border-radius: 0.21333333333333332rem;
+        }
+        .nowprice{
+          font-weight: 700;
+          font-family: PingFangSC-Medium;
+          vertical-align: bottom;
+          color: #222;
+        }
+        .delprice{
+          font-size: 0.29333333333333333rem;
+          color: #98989f;
+          text-decoration: line-through;
+        }
+        .discount{
+          font-size: 0.29333333333333333rem;
+          color: #98989f;
+          margin-left: 0.05rem;
+        }
+      }
+      .product-msg-box{
+        width: 100%;
+        .product-name{
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: #585c64;
+          width: 100%;
+        }
+        .product-atmosphere{
+          font-family: PingFangSC-Regular;
+          width: 100%;
+          padding-top: 0.21333333333333332rem;
+          font-size: 0.29333333333333333rem;
+          color: #98989f;
+          line-height: 0.29333333333333333rem;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
