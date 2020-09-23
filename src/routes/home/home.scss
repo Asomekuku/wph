@@ -27,8 +27,6 @@
 }
 
 .home {
-    overflow: hidden;
-
     .homeNav {
         @include flex();
         height: 0.8rem;
@@ -36,7 +34,7 @@
         position: sticky;
         top: 1.8rem;
         left: 0px;
-
+        margin-bottom: 0.266667rem;
         .homeNav-item {
             box-sizing: border-box;
             height: 0.8rem;
@@ -54,31 +52,33 @@
             border-bottom: 0.08rem solid #D34BA8;
         }
     }
-
+    // 菜单栏
     .homeMaun {
         position: relative;
         background: #fff;
-        top:-1.8rem;
+        top: -2.2rem;
         .homeMaun-icon {
             position: absolute;
             right: 0;
-            top: 0.8rem;
+            top: 1rem;
             background: #F5F5F9;
             text-align: center;
             line-height: 1.5rem;
             width: 1.066667rem;
-            height: 1.066667rem;
+            height: 1rem;
         }
 
         .homeMaun-content {
+            background: #fff;
+            position: absolute;
+            z-index: 5;
+            height: 200vh;
 
             .homeMaun-content-top {
                 @include flex();
                 padding: 0px 0.266667rem;
-
-                p {}
-
-                icon {}
+                height: 1rem;
+                line-height: 1rem;
             }
 
             .homeMaun-content-nav {
@@ -90,11 +90,12 @@
             .Maun-item-active {
                 @include maunActive();
                 color: #D34BA8;
-
             }
+
             .Maun-item-active:last-child {
                 border: none;
             }
+
             .Maun-item {
                 @include maunActive();
             }
@@ -111,6 +112,7 @@
                     flex-direction: row;
                     flex-wrap: wrap;
                     justify-content: start;
+                    height: 100%;
 
                     span {
                         width: 1.4rem;
@@ -126,5 +128,256 @@
                 }
             }
         }
+
+        .homeBanner {
+            position: relative;
+            top: 0px;
+            z-index: 1;
+            height: 100vh;
+        }
     }
+
+    .homeImg {
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .homeNavImg {
+        .homeNavImg-item {
+            @include flex();
+
+            .img-item {
+                img {
+                    width: 2rem;
+                    height: 2.24rem;
+                }
+            }
+        }
+    }
+
+    // 内容区域
+    .homeHeight {
+        height: calc(100vh - 2.6rem);
+        overflow-y: scroll;
+        transition: all 1s;
+        //大卖特卖区域
+        .homeCartBuy {
+            width: 100%;
+            box-sizing: border-box;
+            padding-top: 1.2rem;
+            margin-bottom: 0.666667rem;
+            height: 5.6rem;
+
+            .homeBuy-user {
+                @include flex();
+                padding: 0px 0.266667rem;
+                justify-content: center;
+
+                img {
+                    width: 0.453333rem;
+                    height: 0.453333rem;
+                    border-radius: 50px;
+                    margin-right: 0.133333rem;
+                    margin-bottom: 0.133333rem;
+                }
+
+                p {
+                    color: #fff;
+                }
+            }
+
+            .homeBuy-shop {
+                @include flex();
+                padding: 0px 0.4rem;
+
+                img {
+                    width: 3rem;
+                    height: 3.6rem;
+                }
+            }
+        }
+
+        // 唯品快抢
+        .homeCartVip {
+            width: 100%;
+            box-sizing: border-box;
+            padding-top: 0.6rem;
+            margin-bottom: 0.266667rem;
+            height: 5.6rem;
+
+            .homeVip-top {
+                @include flex();
+                width: 68%;
+                margin-left: 2.7rem;
+                margin-bottom: 1.066667rem;
+
+                img {
+                    width: 1.5rem;
+                    height: 0.4rem;
+                }
+            }
+            .homeVip-shop {
+                @include flex();
+                padding: 0px 0.4rem;
+                .VipShop-item {
+                    @include flex();
+                    flex-direction: column;
+                    >img {
+                        width: 2rem;
+                        height: 2rem
+                    }
+                    p {
+                        text-align: center;
+                        padding-top: 0.266667rem;
+                        margin-bottom: 0.133333rem;
+                    }
+                    span {
+                        color: #F13968;
+                    }
+                }
+            }
+        }
+
+        //最后疯抢
+        .homeCartAtLast {
+            padding-top: 0.6rem;
+            .homeVip-top{
+                margin-bottom: 0.3rem;
+            }
+            .homeVip-shop {
+                .VipShop-item {
+                    img {
+                        width: 3rem;
+                        height:2.8rem;
+                    }
+                    p{
+                        margin-bottom: 0.066667rem;
+                        >img {
+                            width: 1.6rem;
+                            height: 0.6rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 清仓特惠
+        .homeCartClearance {
+            height: 5rem;
+
+            .homeVip-shop {
+                height: 2rem;
+
+                .VipShop-item {
+                    @include flex();
+                    flex-direction: column;
+                    justify-content: start;
+
+                    >p {
+                        background: #fff;
+                        position: relative;
+                        top: -0.3rem;
+                        border-radius: 0.04rem;
+                        height: 0.2rem;
+                        line-height: 0rem;
+                        box-shadow: 1px 2px 2px 1px #eee;
+                        width: 1.4rem;
+                        text-align: center;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        // 上新
+        .homeCart-New {
+            img {
+                width: 100%;
+                height: 100%;
+                margin-bottom: 0.266667rem;
+            }
+        }
+
+        // 卡片区
+        .homeCart {
+            .homeCartImg {
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .homeCart-item {
+                margin-bottom: 0.266667rem;
+                padding: 0px 0.266667rem;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0.4rem 0.4rem 0rem 0rem;
+                }
+
+                .Cart-item-text {
+                    @include flex();
+                    align-items: flex-start;
+                    border-radius: 0rem 0rem 0.4rem 0.4rem;
+                    height: 1.4rem;
+                    background: #fff;
+                    padding: 0.266667rem;
+
+                    .item-text-left {
+                        h3 {
+                            font-size: 0.426667rem;
+                            font-weight: 600;
+                            margin-bottom: 0.266667rem;
+                        }
+
+                        .text-left-bottom {
+                            @include flex();
+                            justify-content: start;
+
+                            p {
+                                margin-right: 0.533333rem;
+                                height: 0.533333rem;
+                                line-height: 0.533333rem;
+                                background: #8EDA4F;
+                                color: #fff;
+                                border-radius: 0.266667rem;
+                                font-size: 0.133333rem;
+                            }
+
+                            span {
+                                color: rgb(239, 56, 102)
+                            }
+                        }
+                    }
+
+                    .item-text-right {
+                        span {
+                            color: #98989F;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //回到顶部
+    .homeCartUp{
+            position: fixed;
+            right: 0.4rem;
+            bottom: 0.666667rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            background: black;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.2rem;
+            >i{
+                font-size: 0.533333rem;
+                color: #fff;
+            }
+    }
+
 }

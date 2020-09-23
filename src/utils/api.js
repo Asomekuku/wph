@@ -79,8 +79,31 @@ export function loginCheck(data){
     })
 }
 
-
-
+// 轮播图
+export function fetchCatSwiper(params){
+    return axios({
+        url:'http://localhost:8080/vips-mobile/rest/layout/h5/channel/data',
+        methods:'GET',
+        params
+    })
+}
+//导航栏
+export function fetchCatNav(params){
+    return axios({
+        url:'http://localhost:8080/vips-mobile/rest/layout/h5/channel/data',
+        methods:'GET',
+        params
+    })
+}
+// 卡片区
+export function fetchCatCart(params){
+    return axios({
+        url:"http://localhost:8080/vips-mobile/rest/layout/h5/channel/data",
+        methods:"GET",
+        params
+        
+    })
+}
 
 export default {
     axiosGoodDetails
