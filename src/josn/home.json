@@ -1,0 +1,96 @@
+{
+    "bigSale": {
+        "bg": "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/09/22/48/mst_e8fc32a0a2b87b4be2ea85ae99f86e0c_750x485_90.png",
+        "text": "88.2万人在观看",
+        "Avatar": [
+            "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/08/04/68/mst_a563c663a5c91e41399f7252910e293e_34x34_90.jpg",
+            "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/07/27/54/mst_cd1ae3b36c9444863b6367513d0f803d_34x34_90.jpg",
+            "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/07/29/110/mst_af22ab523cdf9d04c79e393c99e2b52d_34x34_90.jpg"
+        ],
+        "shop": [
+            "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/09/22/149/mst_c347b0cdaa9f2149262e138238e9ddda_228x316_90.png",
+            "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/09/22/125/mst_ef78113d5b44e9559598c07663b81d17_228x316_90.png",
+            "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/09/22/10/mst_7f9a6317e14216a2b48976170cde4802_228x316_90.png"
+        ]
+    },
+    "VIP": {
+        "bg": "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/08/27/18/mst_dcb764d2736c347910424c06c08a6e4d_750x386_90.jpg",
+        "title": "天天低价 已售190+万件",
+        "img": "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/09/10/0/mst_1327d7a3b351c54b39636b90fed4417c.gif",
+        "shop": [{
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/618364/2020/0901/116/d82e7a6d-7320-433e-9bf6-f5a921347c5c_160x160_90.jpg",
+                "text": "OOU",
+                "price": "46"
+            },
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/105940/2020/0417/166/4905155f-91f6-4dde-8bee-aa9947439986_160x160_90.jpg              ",
+                "text": "蓝典                ",
+                "price": "58"
+            },
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2020/07/15/141/2987aebc-5bba-4bd1-85dd-6972756d8e4d_160x160_90.jpg",
+                "text": "DEVONOALE",
+                "price": "52"
+            },
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcpos/1100000946/2020/0614/76/18fe2aba-eab8-401b-b832-b3da048886e1_160x160_90.jpg                ",
+                "text": "稻香春",
+                "price": "59"
+            }
+        ]
+    },
+    "atLast": {
+        "bg": "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/08/14/32/mst_7627437ad0cb78e5e9eaa7507d4b33e5_750x446_90.jpg",
+        "title": "1000+品牌正在疯抢",
+        "img": "https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/07/23/106/mst_f470ebea1f89b0ae3ecb28b427054834.gif",
+        "shop": [{
+                "img": "https://h2.appsimg.com/a.appsimg.com/upcb/2020/09/21/49/ias_160067973126974_218x201_90.jpg",
+                "titleImg": "https://h2.appsimg.com/a.appsimg.com/upload/brandcool/0/475a1dfc79c748819f8fd3e9c7ce5dab/10004119/primary_120x60_90.png",
+                "sum": "共656款"
+            },
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upcb/2020/09/21/174/ias_160065678010157_218x201_90.jpg",
+                "titleImg": "https://h2.appsimg.com/a.appsimg.com/upload/brandcool/0/04711cfb719443b3b28eb5ad36d39197/10026339/primary_120x60_90.png",
+                "sum": "共597款"
+            }, {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upcb/2020/09/22/131/ias_160076412618372_218x201_90.jpg",
+                "titleImg": "https://h2.appsimg.com/a.appsimg.com/upload/brandcool/0/efd14f15a5314e5ea11979c339abd5ee/10001351/primary_120x60_90.png",
+                "sum": "共1012款"
+            }
+        ]
+    },
+    "clearance":{
+        "bg":"https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/07/23/42/mst_72de5fa3f6b694e571ca57e4d2dc7968_750x342_90.jpg",
+        "img":"https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/07/23/130/mst_b4fea3420bd5e5f00e9d62e4af43555f.gif",
+        "title":"极致性价比好物大搜罗",
+        "shop":[
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/107762/2020/0518/140/102e70ae-f409-411b-a7b2-ffc34e0022ba_160x160_90.jpg",
+                "text": "杰米克",
+                "price": "63"
+            },
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvop/00112613/10014498/879592050-2309860489430265863-2309860489430269973-1_160x160_90.jpg",
+                "text": "尚都比拉",
+                "price": "44"
+            },
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2020/09/09/151/ffae6425-b1b2-4a5f-b197-98f9211f4928_160x160_90.jpg",
+                "text": "斯凯奇",
+                "price": "49"
+            },
+            {
+                "img": "https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2020/05/07/0/6541e301-4d19-44d7-8fe9-66fe151e8486_160x160_90.jpg",
+                "text": "索菲丝尔",
+                "price": "62"
+            }
+        ]
+    },
+    "Request":[
+        {"num":1600853039, "load_more_token": "eyJjaGFubmVsX2lkIjoiNDkiLCJ0c2lmdCI6IjEiLCJicmFuZF9vZmZzZXQiOiIzMCIsImJyYW5kX3JlZmVyX2luZGV4IjoiMTAiLCJ0b3BpY19ncm91cCI6IjAiLCJ3ZWl4aW5CcmFuZFRocmVlIjoiMCJ9"},
+        {"num":1600860985, "load_more_token": "eyJjaGFubmVsX2lkIjoiNDkiLCJ0c2lmdCI6IjEiLCJicmFuZF9vZmZzZXQiOiIzMCIsImJyYW5kX3JlZmVyX2luZGV4IjoiMTAiLCJ0b3BpY19ncm91cCI6IjAiLCJ3ZWl4aW5CcmFuZFRocmVlIjoiMCJ9"},
+        {"num":1600861049, "load_more_token": "eyJjaGFubmVsX2lkIjoiNDkiLCJ0c2lmdCI6IjEiLCJicmFuZF9vZmZzZXQiOiI5MCIsImJyYW5kX3JlZmVyX2luZGV4IjoiMTAiLCJ0b3BpY19ncm91cCI6IjAiLCJ3ZWl4aW5CcmFuZFRocmVlIjoiMCJ9"},
+        {"num":1600861083, "load_more_token": "eyJjaGFubmVsX2lkIjoiNDkiLCJ0c2lmdCI6IjEiLCJicmFuZF9vZmZzZXQiOiIxMjAiLCJicmFuZF9yZWZlcl9pbmRleCI6IjEwIiwidG9waWNfZ3JvdXAiOiIwIiwid2VpeGluQnJhbmRUaHJlZSI6IjAifQ=="},
+        {"num":1600847202, "load_more_token": "eyJjaGFubmVsX2lkIjoiNDkiLCJ0c2lmdCI6IjEiLCJicmFuZF9vZmZzZXQiOiIzMCIsImJyYW5kX3JlZmVyX2luZGV4IjoiMTAiLCJ0b3BpY19ncm91cCI6IjAiLCJ3ZWl4aW5CcmFuZFRocmVlIjoiMCJ9"}
+    ]
+}

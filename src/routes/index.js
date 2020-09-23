@@ -9,6 +9,7 @@ const My = loadable(()=>import('./my/My'))
 const Login = loadable(()=>import('./login/login'))
 const Detail = loadable(()=>import('./good/Detail.js'))
 const GoodList = loadable(()=>import('./good/GoodList'))
+const Snap = loadable(()=>import('./snap/snap'))
  const routes = [
     {
         id:1,
@@ -17,7 +18,13 @@ const GoodList = loadable(()=>import('./good/GoodList'))
         selectedIcon:<Icon type='check-circle' />,
         path:'/home',
         component:Home,
-        
+        children:[
+            {
+                id:10,
+                path:"/app",
+                component:loadable(()=>import('./home/app'))
+            }
+        ]
     },
     {
         id:2,
@@ -59,9 +66,14 @@ const GoodList = loadable(()=>import('./good/GoodList'))
     },
     {
         id:123,
-        path:'/login',
+        path:'/login/:regiSign',
         component:Login
 
+    },
+    {
+        id:121,
+        path:'/snap',
+        component:Snap
     }
 ]
 

@@ -1,6 +1,6 @@
-
 const { createProxyMiddleware } = require('http-proxy-middleware');
     module.exports = function(app) {
+        // eslint-disable-next-line no-unused-expressions
         app.use(
             '/api',
             createProxyMiddleware({
@@ -14,16 +14,16 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
             changeOrigin: true
           })),
         app.use(
-        "/vips-mobile/rest",
+        '/vips-mobile/rest',
         createProxyMiddleware({
-          target: "https://mapi-rp.vip.com",
+          target: 'https://mapi-rp.vip.com',//疯抢
           changeOrigin: true,
         })),
         app.use(
-          "/vips-mobile",
+          '/vips-mobile',
           createProxyMiddleware({
-            target:"https://mapi.vip.com",
-            changeOrigin:true,
+            target:'https://mapi.vip.com',//疯抢左边导航栏
+            changeOrigin:true
           })
         )
     };
