@@ -4,9 +4,11 @@
         top:0;
         left:0px;
         height:1.8rem;
+        z-index: 20;
         background: url("https://h2.vipstatic.com/ms2-m.vipstatic.com/static_v2/img/download-banner.9584d2a.png") no-repeat 0px 0px/100% 100% ;
         .bannerClose{
             position: absolute;
+            z-index:100;
             top:0;
             left:0;
             font-size:0.8rem;
@@ -23,6 +25,7 @@
             position: absolute;
             top:0.533333rem;
             left:2.666667rem;
+            
             p{
                 margin: 0rem;
                 color:rgba(255,255,255,0.8);

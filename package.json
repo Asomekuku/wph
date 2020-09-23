@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@babel/core": "7.9.0",
     "@loadable/component": "^5.13.2",
     "@svgr/webpack": "4.3.3",
@@ -149,5 +150,4 @@
     "http-proxy-middleware": "^1.0.5",
     "node-sass": "^4.14.1"
   }
- 
 }

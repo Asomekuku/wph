@@ -3,13 +3,15 @@ import { createStore,combineReducers,applyMiddleware } from 'redux'
 
 import homeReducer from './reducers/homeReducer'
 import goodReducer from './reducers/goodReducer'
+import snapReducer from './reducers/snapReducer'
 
 //中间件，用于支持redux中的异步action
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
     home:homeReducer,
-    good:goodReducer
+    good:goodReducer,
+    snap:snapReducer
 })
 
 

@@ -101,7 +101,37 @@ export function fetchCatCart(params){
         url:"http://localhost:8080/vips-mobile/rest/layout/h5/channel/data",
         methods:"GET",
         params
-        
+    })}
+//退出登录
+export function logout(data){
+    return fetch({
+        url:'http://s.linweiqin.com/api/s/logout',
+        method:'POST',
+        data
+    })
+}
+//疯抢
+export function fenq(params){
+    return fetch({
+        url:'http://localhost:8080/vips-mobile/rest/lastsale/elevator_data',
+        method:'GET',
+        params
+    })
+}
+//疯抢左边导航栏
+export function fenqLeft(params){
+    return fetch({
+        url:'http://localhost:8080/vips-mobile/rest/lastsale/elevator/list/floor',
+        method:'GET',
+        params
+    })
+}
+//疯抢列表
+export function fqList(params){
+    return fetch({
+        url:'http://api.tbk.dingdanxia.com/vip/goodsList',
+        method:'GET',
+        params
     })
 }
 

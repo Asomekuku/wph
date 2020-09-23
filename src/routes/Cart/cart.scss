@@ -1,3 +1,23 @@
+@mixin displayConter{
+    margin-left: auto;
+    margin-right: auto;
+}
+//百分之百
+@mixin Hundred{
+    width: 100%;
+    height: 100%;
+}
+
+
+@mixin DomSize($width:20px,$height:20px,$fontsize:12px,$border:none) {
+    width: $width;
+    height: $height;
+    line-height: $height;
+    font-size: $fontsize;
+    border: $border;
+
+}
+
 .cart{
     background: rgb(243,240,235);
     height: 100%;
@@ -166,4 +186,85 @@
             line-height: 40px;
         }
     }
+    .no-cart-goods{
+        .cart-show{
+            box-sizing: border-box;
+            height: 350px;
+            background: #fff;
+            position: relative;
+            padding-top: 40px;
+            &>img:nth-child(1){
+                position: absolute;
+                left: 18px; top: 0;
+                width: 90%;
+            }
+            &>img:nth-child(2){
+                width: 110px;
+                height: 140px;
+                
+                @include displayConter;
+            }
+            &>div:nth-child(3){
+                // @include displayConter;
+                text-align: center;
+                @include DomSize(100%,30px,16px);
+                margin-top:10px;
+
+            }
+            &>div:nth-child(4){
+                @include displayConter;
+                margin-top:10px;
+                text-align: center;
+                border-radius: 10px;
+                @include DomSize(180px,30px,16px,1px solid  rgb(228,0,122));
+            }
+        }
+    }
+    .no-login{
+        h1{
+            @include DomSize(100%,40px,20px);
+            text-align: center;
+        }
+        button{
+            @include DomSize(100px,40px,20px,1px solid rgb(228,0,122));
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+.discount{
+    height: 500px;
+    position: relative;
+    &>div:nth-child(1){
+        overflow: hidden;
+        border-bottom: 1px solid rgb(211, 211, 211);
+        &>h1{
+            margin: 0;
+            @include DomSize(100px,60px,18px);
+            text-align: left;
+            margin-left: 20px;
+            color: black;
+            float: left;
+        }
+        &>i{
+            @include DomSize(60px,60px,18px);
+            float: right;
+            text-align: right;
+            text-align: center;
+            
+        }
+    }
+    &>div:nth-child(3){
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        &>h2{
+            @include DomSize(100%, 50px, 18px, );
+            background: rgb(228,0,122);
+            color: #fff;
+        }
+    }
+    
 }

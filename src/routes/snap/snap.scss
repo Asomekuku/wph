@@ -1,0 +1,53 @@
+.kk_snap{
+    height:100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    .snap_one{
+        width: 20%;
+        height: 100%;
+        background: #fff;
+        overflow-y: auto;
+        &>div{
+            width: 100%;
+            height: 75px;
+            background: #fff;
+            text-align: center;
+            line-height: 2rem;
+            box-sizing: border-box;
+        }
+    }
+    .two{
+        width: 80%;
+        height: 100%;
+        background: #F3F4F5;
+        overflow-y: auto;
+        &>p{
+            padding-top: 10px;
+            text-align: center;
+        }
+        &>div{
+            width: 30%;
+            float: left;
+            height: 152px;
+            background: #fff;
+            margin-left: 0.186667rem;
+            margin-top: 0.286667rem;
+            &>img{
+                width: 100%;
+                height: 70%;
+            }
+            &>span{
+                box-sizing: border-box;
+                padding-top: 10px;
+                display: -webkit-box;
+                word-break: break-all;
+                overflow: hidden;
+                max-height: 1.06667rem;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
