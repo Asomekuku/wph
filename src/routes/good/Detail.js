@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './detail.scss'
 import { connect } from 'react-redux'
-import { getGoodDetail } from '../../store/actions/goodAction'
+import { getGoodDetail,getGoods } from '../../store/actions/goodAction'
 import { Carousel } from 'antd-mobile';
 //共享state中的数据，可以用this.props进行访问
 function mapStateToProps(store){
@@ -14,6 +14,7 @@ function mapActionToProps(dispatch){
   return {
     // //商品列表
     detailsInit:(params)=>dispatch(getGoodDetail(params)),
+    getGoods:(payload)=>dispatch(getGoods(payload))
 
   }
 }
@@ -73,7 +74,7 @@ class Detail extends Component {
   }
 
   changeScrollTopShow(e) {
-    console.log(this.refs.bodyBox.scrollTop)
+    console.log(this.refs.bodyBox2.scrollTop)
     if (document.documentElement.scrollTop < 400) {
       this.setState({
         show: false
@@ -87,26 +88,39 @@ class Detail extends Component {
    //添加动画效果
    scrollToTop() {
     const scrollToTop = window.setInterval(() => {
-      let pos = this.refs.bodyBox.scrollTop;
+      let pos = this.refs.bodyBox2.scrollTop;
       if ( pos > 0 ) {
-        this.refs.bodyBox.scrollTo( 0, pos - 20 );
+        this.refs.bodyBox2.scrollTo( 0, pos - 20 );
       } else {
         clearInterval( scrollToTop );
       }
     }, 1);
   }
   showBtn(){
-    if(this.refs.bodyBox.scrollTop > 400){
+    if(this.refs.bodyBox2.scrollTop > 400){
       this.setState({show:true})
     }else{
       this.setState({show:false})
     }
   }
+  addGoods(){
+    console.log(this.props.goodDetails)
+    let { goodDetails }=this.props
+    let data = {
+      good_num:1,
+      img:this.state.baseUrl+goodDetails.previewImages[0].imageUrl,
+      market_price:goodDetails.max_market_price,
+      title:goodDetails.longTitle,
+      vip_price:goodDetails.max_vipshop_price
+    }
+    this.props.getGoods(data)
+    
+  }
   render() {
     let { goodDetails } = this.props
     let { baseUrl,show } = this.state
     return (
-      <div className="detail" ref="bodyBox" onScroll={this.showBtn.bind(this)}>
+      <div className="detail" ref="bodyBox2" onScroll={this.showBtn.bind(this)}>
         {/* 返回顶部 */}
         {show && <div className="back-top" onClick={this.scrollToTop.bind(this)}>
           <i className="iconfont icon-xiangshangjiantou"></i>
@@ -295,7 +309,7 @@ class Detail extends Component {
           <div className="shop-cart" onClick={this.goCart.bind(this)}>
           <i className="iconfont icon-gouwuche"></i>
           </div>
-          <div className="add-cart">加入购物车</div>
+          <div className="add-cart" onClick={this.addGoods.bind(this)}>加入购物车</div>
         </div>
       </div>
     )
