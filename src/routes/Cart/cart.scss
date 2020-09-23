@@ -233,3 +233,38 @@
         }
     }
 }
+
+.discount{
+    height: 500px;
+    position: relative;
+    &>div:nth-child(1){
+        overflow: hidden;
+        border-bottom: 1px solid rgb(211, 211, 211);
+        &>h1{
+            margin: 0;
+            @include DomSize(100px,60px,18px);
+            text-align: left;
+            margin-left: 20px;
+            color: black;
+            float: left;
+        }
+        &>i{
+            @include DomSize(60px,60px,18px);
+            float: right;
+            text-align: right;
+            text-align: center;
+            
+        }
+    }
+    &>div:nth-child(3){
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        &>h2{
+            @include DomSize(100%, 50px, 18px, );
+            background: rgb(228,0,122);
+            color: #fff;
+        }
+    }
+    
+}

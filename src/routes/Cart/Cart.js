@@ -5,7 +5,7 @@ import './cart.scss'
 import { connect } from "react-redux";
 import { goodAdd,goodSub,getGoods,goodDel,time } from "../../store/actions/goodAction";
 
-import { NavBar, Icon } from 'antd-mobile';
+import { NavBar, Icon,Modal, List,Checkbox, Button, WhiteSpace,WingBlank, } from 'antd-mobile';
 
 import { KBSecure,KBLocation,NoGoods } from '@/components/'
 
@@ -26,12 +26,21 @@ function mapStateToProps(store) {
         time:()=>dispatch(time())
     };
   }
+  const CheckboxItem = Checkbox.CheckboxItem;
+// const AgreeItem = Checkbox.AgreeItem;
 
 class Cart extends React.Component{
     constructor(props){
         super(props)
         this.state={
             user:false, //判断用户登录了没
+            list_data : [
+                { value: 0,check:false,num:20, label: '优惠20元' },
+                { value: 1,check:false,num:500, label: '优惠500元' },
+                { value: 2,check:false,num:99999999999999, label: '不要钱' },
+            ],
+            discount_money:0,
+            bol:true
         }
     }
     componentDidMount(){
@@ -51,6 +60,7 @@ class Cart extends React.Component{
         setInterval(()=>{
             this.props.time()
             // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
+            this.setState({bol:false})
         },1000)
         this.setState({isTime:true})
         
@@ -58,6 +68,7 @@ class Cart extends React.Component{
         
         // let date_over = date
     }
+    //根据数据生成商品
     createShopCart(){
         // console.log(this.props.goods)
         return this.props.goods.map((ele,idx)=>(
@@ -87,17 +98,21 @@ class Cart extends React.Component{
             </div>
         ))
     }
+    //跳转地址(登录页面)
     jump(){
         this.props.history.push('/login/'+123)
     }
+    //计算总价
     count(){
         let num=0
         this.props.goods.map(ele=>{
             num+=parseInt(ele.vip_price)*ele.good_num
             return null
         })
+        // this.setState({discount_money:num})
         return num
     }
+    //商品增加与减少
     dian(bol,idx){
         if(bol){
             this.props.goodAdd(idx)
@@ -105,10 +120,82 @@ class Cart extends React.Component{
             this.props.goodSub(idx)
         }
     }
+    closest(el, selector) {
+        const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+        while (el) {
+          if (matchesSelector.call(el, selector)) {
+            return el;
+          }
+          el = el.parentElement;
+        }
+        return null;
+      }
+    showModal = key => (e) => {
+        e.preventDefault(); // 修复 Android 上点击穿透
+        this.setState({
+          [key]: true,
+        });
+      }
+      onClose = key => () => {
+        this.setState({
+          [key]: false,
+        });
+      }
+      
+    //好像是兼容
+    onWrapTouchStart = (e) => {
+    // fix touch to scroll background page on iOS
+    if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
+        return;
+    }
+    const pNode = this.closest(e.target, '.am-modal-content');
+    if (!pNode) {
+        e.preventDefault();
+    }
+    }
+    //选优惠券
+    onChange = (val) => {
+        this.state.list_data[val].check=!this.state.list_data[val].check
+        let obj=this.state.list_data
+        this.setState({
+            list_data:obj
+        })
+    
+    }
+
+    //算折扣后的价格
+    UseCoupons(){
+        let money=0
+        this.state.list_data.map(ele=>{
+            if(ele.check){
+            money+=ele.num
+            }
+        })
+        let num=this.count()-money
+      this.setState({discount_money:num},()=>{
+          if(this.state.discount_money<0){
+            this.setState({discount_money:0})
+          }
+      })
+    }
+    shouldComponentUpdate(){
+        // setInterval(()=>{
+        //     this.props.time()
+        //     return false
+        //     // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
+        // },1000)
+        // return true
+        if(!this.state.bol){
+            return false
+        }else{
+            return true
+        }
+    }
     render(){
-        let { user } =this.state
+        let { user,list_data,discount_money } =this.state
         let { goods } = this.props
         // console.log('状态管理goods',goods)
+        console.log(this.props.goods)
         
         return (
             <div className="cart">
@@ -116,22 +203,68 @@ class Cart extends React.Component{
 
                 {goods.length
                 ?   (<>
+                        {/* 头部 */}
                         <NavBar
                             mode="light"
                             icon={<Icon type="left" />}
                             onLeftClick={() => this.props.history.go(-1)}
-                            >确认订单{`还剩${this.props.minute}分${this.props.second}`}</NavBar> 
+                        >确认订单{`还剩${this.props.minute}分${this.props.second}`}
+                        </NavBar> 
+
+                        {/* 安全提示 */}
                         <KBSecure></KBSecure>
+
+                        {/* 设置地址 */}
                         <KBLocation></KBLocation>
+
+                        {/* 购物车商品列表 */}
                         <div className="goods_list">
                             <h1>唯品自营</h1>
                             {this.createShopCart()}
                         </div>
+
+                        {/* 总价显示 */}
                         <div className="goods_price">￥{this.count()}</div>
-                        <div className="yhq">
+
+                        {/* 使用优惠券按钮 */}
+                        <div onClick={this.showModal('modal2')} className="yhq">
                             <span>使用优惠券</span>
                             <Icon type="right" />
                         </div>
+
+
+                        {/* 优惠券弹出框 */}
+                        <Modal
+                        popup
+                        visible={this.state.modal2}                     //对话框默认是显示还是隐藏，默认为false
+                        onClose={this.onClose('modal2')}                
+                        animationType="slide-up"                        //从哪弹出
+                        afterClose={()=>{this.UseCoupons()}}     //关闭之后的回调函数
+                        >
+                            <div className="discount">
+                                <div>
+                                    <h1>使用优惠券</h1>
+                                    <i onClick={this.onClose('modal2')} className="iconfont icon-cuo"></i>
+                                </div>
+                                <div>
+                                <List>
+                                    {list_data.map(i => (
+                                    <CheckboxItem key={i.value} checked={i.check} onChange={() => this.onChange(i.value)}>
+                                        {i.label}
+                                    </CheckboxItem>
+                                    ))}
+                                    
+                                </List>
+                                </div>
+                                <div onClick={this.onClose('modal2')}>
+                                    <h2>确定</h2>
+                                </div>
+                            </div>
+                        </Modal>
+                        {/* 优惠券弹出框 */}
+
+
+                        
                         <div>
                             <span>订单金额</span>
                             <em>￥{this.count()}</em>
@@ -141,7 +274,7 @@ class Cart extends React.Component{
                             <em>￥{this.count()}</em>
                         </div>
                         <div>
-                            <span>还需支付：<em>￥{this.count()}</em></span>
+                            <span>还需支付：<em>￥{discount_money}</em></span>
                             <div>在线支付</div>
                         </div>
                     </>)
@@ -159,3 +292,13 @@ class Cart extends React.Component{
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Cart);
+
+
+{/* <List renderHeader={() => <div>委托买入</div>} className="popup-list">
+        {['股票名称', '股票代码', '买入价格'].map((i, index) => (
+            <List.Item key={index}>{i}</List.Item>
+        ))}
+        <List.Item>
+            <Button type="primary" onClick={this.onClose('modal2')}>买入</Button>
+        </List.Item>
+    </List> */}
