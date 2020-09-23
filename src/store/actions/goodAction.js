@@ -5,7 +5,8 @@ import {
     GOOD_SUB,
     GOOD_UPD,
     GOOD_DEL,
-    TIME
+    TIME,
+    GOOD_COUNT
 } from '../actionType'
 
 import { getClassify,getClassDetail,axiosGoodDetails } from '@/utils/api'

@@ -5,7 +5,7 @@ import {
     GOOD_SUB,
     GOOD_UPD,
     GOOD_DEL,
-    TIME
+    TIME,
 } from '../actionType'
 
 const initState = {
@@ -15,7 +15,7 @@ const initState = {
   goods:[],
   date:1200,
   minute:0,    //分钟
-  second:0     //秒
+  second:0,     //秒
 }
 
 export default function goodReducer(state=initState,action){
@@ -56,7 +56,6 @@ export default function goodReducer(state=initState,action){
             newState.second = parseInt(newState.date%60)
             // console.log(`多少分${newState.minute}多少秒${newState.second}`)
             return newState
-            
         default:
             return state;
     }
