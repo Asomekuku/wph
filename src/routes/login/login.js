@@ -6,7 +6,7 @@ import './login.scss'
 import {withRouter} from 'react-router-dom' 
 import { Button, WhiteSpace} from 'antd-mobile'
 import { List, InputItem , Toast } from 'antd-mobile'
-import {getMobileCode , createUser , loginCheck} from '@/utils/api'
+import {getMobileCode , createUser , loginCheck } from '@/utils/api'
  class Login extends React.Component{
      constructor(props){
          super(props)
@@ -26,7 +26,7 @@ import {getMobileCode , createUser , loginCheck} from '@/utils/api'
     componentDidMount(){
 
         this.props.match.params.regiSign === 'regi' ? this.setState({cut:false}) : this.setState({cut:true})
-
+       
     }
     //改变bol登录注册,密码登录
     iscut(){

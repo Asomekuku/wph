@@ -7,6 +7,7 @@ const Good = loadable(()=>import('./good/Good'))
 const Cart = loadable(()=>import('./Cart/Cart'))
 const My = loadable(()=>import('./my/My'))
 const Login = loadable(()=>import('./login/login'))
+const Snap = loadable(()=>import('./snap/snap'))
  const routes = [
     {
         id:1,
@@ -60,6 +61,11 @@ const Login = loadable(()=>import('./login/login'))
         path:'/login/:regiSign',
         component:Login
 
+    },
+    {
+        id:121,
+        path:'/snap',
+        component:Snap
     }
 ]
 

@@ -15,8 +15,15 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
         app.use(
         "/vips-mobile/rest",
         createProxyMiddleware({
-          target: "https://mapi-rp.vip.com",
+          target: "https://mapi-rp.vip.com",//疯抢
           changeOrigin: true,
-        }))
+        })),
+        app.use(
+          "/vips-mobile",
+          createProxyMiddleware({
+            target:"https://mapi.vip.com",//疯抢左边导航栏
+            changeOrigin:true
+          })
+        )
     };
 
