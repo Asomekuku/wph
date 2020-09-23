@@ -19,8 +19,14 @@ import {getMobileCode , createUser , loginCheck} from '@/utils/api'
          }
      }
     goHome(){
-        console.log(this.props.history)
+       
         this.props.history.push('/home')
+    }
+    //挂载完成
+    componentDidMount(){
+
+        this.props.match.params.regiSign === 'regi' ? this.setState({cut:false}) : this.setState({cut:true})
+
     }
     //改变bol登录注册,密码登录
     iscut(){
@@ -70,7 +76,7 @@ import {getMobileCode , createUser , loginCheck} from '@/utils/api'
     }
     //注册按钮
     regi(){
-        console.log(123)
+        
         if(this.state.userName && this.state.passWord && this.state){
             createUser({
                 mobile:this.state.userName,
@@ -78,7 +84,7 @@ import {getMobileCode , createUser , loginCheck} from '@/utils/api'
                 password:this.state.passWord,
                 code:this.state.proof
             }).then(res=>{
-                console.log(res)
+              
                 if(res.data.msg==='注册成功'){
                     this.successToast()
                 }

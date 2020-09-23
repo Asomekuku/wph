@@ -78,6 +78,14 @@ export function loginCheck(data){
         data
     })
 }
+//退出登录
+export function logout(data){
+    return fetch({
+        url:'http://s.linweiqin.com/api/s/logout',
+        method:'POST',
+        data
+    })
+}
 
 
 

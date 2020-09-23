@@ -57,7 +57,7 @@ const Login = loadable(()=>import('./login/login'))
     },
     {
         id:123,
-        path:'/login/:id',
+        path:'/login/:regiSign',
         component:Login
 
     }
