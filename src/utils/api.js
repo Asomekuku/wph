@@ -142,14 +142,7 @@ export function fqList(params){
         params
     })
 }
-//专场
-export function shoppingList(params){
-    return fetch({
-        url:'http://localhost:8080/vips-mobile/rest/shopping/wxapp/product/module/list/v2',
-        method:'GET',
-        params
-    })
-}
+
 
 export default {
     axiosGoodDetails

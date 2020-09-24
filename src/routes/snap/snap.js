@@ -2,7 +2,6 @@ import React from 'react'
 import {getSnapLeft , getSnap ,snapList} from '../../store/actions/snapAction'
 import './snap.scss'
 import {connect} from 'react-redux'
-import {shoppingList} from '@/utils/api'
 
 class Snap extends React.Component{
     constructor(props){
@@ -18,28 +17,7 @@ class Snap extends React.Component{
         this.SnapLeftFn()    
         this.fenqFN()  //内容
        
-        shoppingList({
-            app_name: 'shop_wap',
-            app_version: 4.0,
-            api_key: '8cec5243ade04ed3a02c5972bcda0d3f',
-            mobile_platform: 2,
-            source_app: 'yd_wap',
-            warehouse: 'VIP_NH',
-            fdc_area_id: 104104101,
-            province_id: 104104,
-            mars_cid: '1600340640947_df6bdb3024177fc2256b38275ed898b8',
-            mobile_channel: 'mobiles-adp:g1o71nr0::::||',
-            standby_id: 'nature',
-            productIds: '6918415614107488400,6918405402752087248,6918885220223547984,6918415613938974864,6918047585324320720,6918447703327270544,6918446187546097296,6918640360821720976,6918453415009219600,6918367931786552912,6918415613938892944,6918899492263884176,6918447703344109200,6918425730585002448,6918615770747581072,6918911469257063056,6918834324978972176,6918706921386758608,6918719774095045072,6918415613955788944',
-            scene: 'brand',
-            extParams: {"preheatTipsVer":"3","subjectId":"100751918","brandId":"100751918","couponVer":"v2","multiBrandStore":"0","exclusivePrice":"1","iconSpec":"3x"},
-            context: {"615":"0","872":"0"},
-            priceScene: 'future',
-            mvip: true,
-            _: 1600934553,
-        }).then(res=>{
-            console.log(res)
-        })
+     
     }
    
     //fenqFN
@@ -47,7 +25,6 @@ class Snap extends React.Component{
         //接口
        //转字符串进行传参
         let arr1=[100779186,100755633,100755323,100752008,100753509,100752573,100755853,100755748,100752007,100752201,100752203,100752951,100752410,100714744,100752309,100779925,100757267,100752379,100757182,100752014,100752143,100760104,100754193,100761027,100752774,100765073,100751868,100752593,100752459,100754700,100760938,100745857,100752406,100709859,100754279,100751980,100717421,100754703,100752984,100755109]
-        // arr ? arr : arr1
         if(arr){
              arr=arr
         }else{
