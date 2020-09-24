@@ -7,6 +7,8 @@ const Good = loadable(()=>import('./good/Good'))
 const Cart = loadable(()=>import('./Cart/Cart'))
 const My = loadable(()=>import('./my/My'))
 const Login = loadable(()=>import('./login/login'))
+const Detail = loadable(()=>import('./good/Detail.js'))
+const GoodList = loadable(()=>import('./good/GoodList'))
 const Snap = loadable(()=>import('./snap/snap'))
  const routes = [
     {
@@ -37,17 +39,17 @@ const Snap = loadable(()=>import('./snap/snap'))
         path:'/good',
         component:Good,
         children:[
-            //二级页面
-            // {
-            //     id:11,
-            //     path:'/good/details/:id',
-            //     component:Details
-            // },
-            // {
-            //     id:12,
-            //     path:'/good/catlist',
-            //     component:CatList
-            // }
+            // 二级页面
+            {
+                id:21,
+                path:'/good/detail/:goodsId',
+                component:Detail
+            },
+            {
+                id:22,
+                path:'/good/goodlist/:group_id',
+                component:GoodList
+            }
         ]
     },
     {

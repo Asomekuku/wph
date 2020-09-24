@@ -19,6 +19,7 @@ export const GET_SEARCH_LIST = 'GET_SEARCH_LIST'  //搜索列表
 //good
 export const GET_GOOD_LIST = 'GET_GOOD_LIST'            //商品分类
 export const GOOD_CHILD_UPD = 'GOOD_CHILD_UPD'            //商品分类
+export const GOOD_DETAIL = 'GOOD_DETAIL'      //商品详情
 
 export const FENQ = 'EFNQ'  //疯抢
 export const FENQLEFT = 'FENQLEFT'  //疯抢左边导航
