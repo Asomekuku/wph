@@ -39,6 +39,7 @@ class Good extends React.Component{
     };
     //点击切换id
     handleSelect(idx,id){
+      console.log(id)
       this.setState({
         initIdx:idx
       })

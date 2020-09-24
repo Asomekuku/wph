@@ -148,13 +148,32 @@
         display: flex;
         margin-bottom: .4rem;
         .grid-option{
-          width: 2.8rem;
+          width: 2.4rem;
           height: 0.8rem;
           border: 1px solid #ccc;
           border-radius: .05333rem;
           padding: 0 .14667rem;
-          margin-left: .1rem;
+          margin-left: .2rem;
           margin-top: .32rem;
+          display: flex;
+          align-items: center;
+          position: relative;
+          img{
+            width: 0.506667rem;
+            height: 0.506667rem;
+            margin-right: .6rem;
+          }
+          i{
+            position: absolute;
+            right: 0;
+            bottom: -3px;
+            font-size: 0.8rem;
+            color: #de3d96;
+          }
+        }
+        .grid-option.checked{
+          border-color: #de3d96;
+          color:  #de3d96;
         }
       }
     }
@@ -178,13 +197,27 @@
         width: 100%;
         display: flex;
         .grid-option{
-          width: 2.8rem;
+          width: 2.4rem;
           height: 0.8rem;
           border: 1px solid #ccc;
           border-radius: .05333rem;
           padding: 0 .14667rem;
-          margin-left: .1rem;
+          margin-left: .2rem;
           margin-top: .32rem;
+          text-align: center;
+          line-height: 0.8rem;
+          position: relative;
+          i{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            font-size: 0.8rem;
+            color: #de3d96;
+          }
+        }
+        .grid-option.checked{
+          border-color: #de3d96;
+          color:  #de3d96;
         }
       }
     }
@@ -193,7 +226,7 @@
       .grid-option{
         height: 0.8rem;
         border: 1px solid #ccc;
-        min-width: 2.8rem;
+        min-width: 2.4rem;
       }
     }
   }
@@ -480,5 +513,18 @@
       line-height: 1.12rem;
       color: #fff;
     }
+  }
+}
+.am-list-body{
+  height: 11.333333rem;
+  overflow-y: scroll;
+}
+.am-modal-content{
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.am-list-content{
+  span{
+    margin: 0 .4rem;
   }
 }
