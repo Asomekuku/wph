@@ -83,31 +83,6 @@ export function getSize(params){
   }
 }
 
-
-export function getGoods(params){
-  return function(dispatch){
-    axiosGoodDetails(params).then(res=>{
-      // console.log('goods',res)
-      let data = {
-        img:res.data.data.goodsMainPicture,
-        shop_title:res.data.data.storeInfo,
-        title:res.data.data.goodsName,
-        market_price:res.data.data.marketPrice,
-        vip_price:res.data.data.vipPrice,
-        good_num:2 
-    }
-      dispatch({
-        type:GOOD_UPD,
-        payload:data
-      })
-    }).catch(()=>{
-      dispatch({
-          type:GOOD_UPD,
-          payload:[]
-      })
-    })
-  }
-}
 export function getGoods(payload){
   return {
       type:GOOD_UPD,

@@ -1,7 +1,5 @@
 import axios from 'axios'
 import { Toast } from 'antd-mobile';
-
-import {Toast} from 'antd-mobile'
 const instance = axios.create({
     timeout: 7000,
     headers: {}

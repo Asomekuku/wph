@@ -28,15 +28,6 @@ class Good extends React.Component {
       value: "",
       initIdx: 109274,
     };
-<<<<<<< HEAD
-    //点击切换id
-    handleSelect(idx,id){
-      console.log(id)
-      this.setState({
-        initIdx:idx
-      })
-      this.props.goodInit({category_id:id})
-=======
   }
   //挂载完成调接口
   componentDidMount() {
@@ -48,7 +39,6 @@ class Good extends React.Component {
       });
     }else{
       this.props.goodInit({});
->>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
     }
   }
   onChange = (value) => {

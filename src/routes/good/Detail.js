@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import './detail.scss'
 import { connect } from 'react-redux'
-<<<<<<< HEAD
-import { getGoodDetail,getSize } from '../../store/actions/goodAction'
-=======
-import { getGoodDetail,getGoods } from '../../store/actions/goodAction'
->>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
+import { getGoodDetail,getSize,getGoods } from '../../store/actions/goodAction'
 import { Carousel } from 'antd-mobile';
 import { Modal, List,Button } from 'antd-mobile';
 
@@ -21,13 +17,10 @@ function mapActionToProps(dispatch){
   return {
     //商品详情
     detailsInit:(params)=>dispatch(getGoodDetail(params)),
-<<<<<<< HEAD
     //商品大小颜色
-    detailsSize:(params)=>dispatch(getSize(params))
-=======
+    detailsSize:(params)=>dispatch(getSize(params)),
     getGoods:(payload)=>dispatch(getGoods(payload))
 
->>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
   }
 }
 class Detail extends Component {
@@ -119,22 +112,6 @@ class Detail extends Component {
     this.props.history.push('/cart')
   }
 
-<<<<<<< HEAD
-
-=======
-  changeScrollTopShow(e) {
-    console.log(this.refs.bodyBox2.scrollTop)
-    if (document.documentElement.scrollTop < 400) {
-      this.setState({
-        show: false
-      })
-    }else {
-      this.setState({
-        show: true
-      })
-    }
-  }
->>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
    //添加动画效果
    scrollToTop() {
     const scrollToTop = window.setInterval(() => {
@@ -153,7 +130,6 @@ class Detail extends Component {
       this.setState({show:false})
     }
   }
-<<<<<<< HEAD
   onClose = key => () => {
     this.setState({
       [key]: false,
@@ -176,7 +152,7 @@ class Detail extends Component {
     this.setState({
       [key]: true,
     });
-=======
+  }
   addGoods(){
     console.log(this.props.goodDetails)
     let { goodDetails }=this.props
@@ -188,8 +164,6 @@ class Detail extends Component {
       vip_price:goodDetails.max_vipshop_price
     }
     this.props.getGoods(data)
-    
->>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
   }
   render() {
     let { goodDetails,goodSize } = this.props
