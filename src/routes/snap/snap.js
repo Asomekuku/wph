@@ -2,6 +2,7 @@ import React from 'react'
 import {getSnapLeft , getSnap ,snapList} from '../../store/actions/snapAction'
 import './snap.scss'
 import {connect} from 'react-redux'
+import {fenq} from '@/utils/api'
 class Snap extends React.Component{
     constructor(props){
         super(props)
@@ -17,7 +18,26 @@ class Snap extends React.Component{
 
         //左边导航 
         this.SnapLeftFn()
-    
+        let arr=[100757323,100757265,100758402,100754047,100761456,100753413,100754682,100757030,100761624,100755654]
+        let a=arr.join(',')
+        console.log(arr,a)
+        fenq({
+            dept_id: '3,337',
+            brands_id: a,
+            api_key: '8cec5243ade04ed3a02c5972bcda0d3f',
+            warehouse: 'VIP_NH',
+            client: 'phone',
+            product_num: 4,
+            mars_cid: '1600340640947_df6bdb3024177fc2256b38275ed898b8',
+            mobile_platform: 2,
+            fdc_area_id: 104104101,
+            platform: 2,
+            app_version: 1.0,
+            time: 0,
+            is_front: 1
+        }).then(res=>{
+            console.log(res)
+        })
       
     }
     //创建掉接口左边
@@ -82,23 +102,41 @@ class Snap extends React.Component{
             ))
             
         }
-       
-        
+     
+    }
+    //滚动
+    scroll(e){
+        console.log(123,e)
+        console.log(this.refs.bodyBox.scrollTop)
+        if(this.refs.bodyBox.scrollTop>300){
+            this.refs.bodyBox.scrollTop=0
+        }
+    }
+    scroll1(){
+        console.log(123)
     }
     render(){
         let {spanLeftList} =this.props 
         return(
-            <div className='kk_snap'>
+            <div className='kk_snap'
+                
+            >
                 {/* 左 */}
                 <div className='snap_one'>
                     {this.createLeft()}
                     
                 </div>
                 {/* //右 */}
-                <div className='two'>
+                <div className='two'
+                    onScroll={this.scroll1.bind(this)}
+                    ref="bodyBox"
+                >
                     <p>{spanLeftList.length ? spanLeftList[this.state.index].tab_name : ''}</p>
                     {this.createSnapList()}
                 </div>
+                <button
+                    onClick={this.scroll.bind(this)}
+                >点击</button>
             </div>
         )
     }
