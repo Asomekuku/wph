@@ -9,6 +9,7 @@ export function getSnapLeft(params){
                 type:FENQLEFT,
                 payload:res.data.data.elevator_list
             })
+            // console.log(res.data.data.elevator_list[0].brandIds)
         })
     }
 }
@@ -18,7 +19,7 @@ export function getSnap(params){
         fenq(params).then(res=>{
             dispatch({
                 type:FENQ,
-                payload:res
+                payload:res.data.data.brands
             })
         })
     }
