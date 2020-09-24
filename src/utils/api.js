@@ -28,6 +28,15 @@ export function getDetails(params){
   })
 }
 
+//获取商品颜色与尺寸
+export function getSizeColor(params){
+  return fetch({
+    url:'http://localhost:8080/vips-mobile/rest/shop/goods/vendorSkuList/v4',
+    method:'GET',
+    params
+  })
+}
+
 // 获取商品详情 monkey
 export function axiosGoodDetails(params){
     return fetch({

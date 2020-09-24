@@ -95,16 +95,10 @@ class Good extends React.Component {
     let { goodInitList, goodChooseList } = this.props;
     return (
       <div className="good">
-        <div className="good-search">
+        <div className="good-search" onClick={() =>this.props.history.push("/search")}>
           <SearchBar
             value={this.state.value}
             placeholder="护肤套装"
-            onSubmit={(value) => console.log(value, "onSubmit")}
-            onClear={(value) => console.log(value, "onClear")}
-            onFocus={() => console.log("onFocus")}
-            onBlur={() => console.log("onBlur")}
-            onCancel={() => console.log("onCancel")}
-            onChange={this.onChange}
           />
         </div>
         <div className="good-con">

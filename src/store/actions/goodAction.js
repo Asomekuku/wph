@@ -1,17 +1,18 @@
 
 import{
-    GOOD_ADD,
-    GOOD_SUB,
-    GOOD_UPD,
-    GOOD_DEL,
-    TIME,
-    GOOD_COUNT,
-    GET_GOOD_LIST,
-    GOOD_CHILD_UPD,
-    GOOD_DETAIL,
+  GOOD_ADD,
+  GOOD_SUB,
+  GOOD_UPD,
+  GOOD_DEL,
+  TIME,
+  GOOD_COUNT,
+  GET_GOOD_LIST,
+  GOOD_CHILD_UPD,
+  GOOD_DETAIL,
+  GOOD_SIZE_COLOR,
 } from '../actionType'
 
-import { getClassify,getClassDetail,axiosGoodDetails,getDetails } from '@/utils/api'
+import { getClassify,getClassDetail,axiosGoodDetails,getDetails,getSizeColor } from '@/utils/api'
 
 
 //获取商品列表分类
@@ -49,6 +50,7 @@ export function getDetailList(params){
   }
 }
 
+//获取商品详情
 export function getGoodDetail(params){
   return function(dispatch){
     getDetails(params).then(res=>{
@@ -64,6 +66,23 @@ export function getGoodDetail(params){
     })
   }
 }
+
+//获取商品大小颜色
+export function getSize(params){
+  return function (dispatch){
+    getSizeColor(params).then(res=>{
+      dispatch({
+        type:GOOD_SIZE_COLOR,
+        payload:res.data.data.saleProps
+      })
+    }).catch(()=>{
+      dispatch({
+        type:GOOD_SIZE_COLOR,
+      })
+    })
+  }
+}
+
 export function getGoods(payload){
   return {
       type:GOOD_UPD,

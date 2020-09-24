@@ -72,10 +72,9 @@ class HTabBar extends React.Component {
             大家正在搜索：护肤套装
           </div>
           {/* 分类 */}
-          <div onClick={() => this.props.history.push("/good/109274")}>
+          <div onClick={() => this.props.history.push("/good/"+109274)}>
             <i
               className="iconfont icon-fenlei"
-              
             ></i>
           </div>
         </div>
