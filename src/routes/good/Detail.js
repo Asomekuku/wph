@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import './detail.scss'
 import { connect } from 'react-redux'
-import { getGoodDetail,getGoods } from '../../store/actions/goodAction'
+import { getGoodDetail,getSize,getGoods } from '../../store/actions/goodAction'
 import { Carousel } from 'antd-mobile';
+import { Modal, List,Button } from 'antd-mobile';
+
 //共享state中的数据，可以用this.props进行访问
 function mapStateToProps(store){
   return{
     goodDetails:store.good.goodDetails,
+    goodSize:store.good.goodSize,
   }
 }
 //把action生成器方法，映射到props上面
 function mapActionToProps(dispatch){
   return {
-    // //商品列表
+    //商品详情
     detailsInit:(params)=>dispatch(getGoodDetail(params)),
+    //商品大小颜色
+    detailsSize:(params)=>dispatch(getSize(params)),
     getGoods:(payload)=>dispatch(getGoods(payload))
 
   }
@@ -24,10 +29,14 @@ class Detail extends Component {
     this.state = {
       baseUrl:'https://h2a.appsimg.com/a.appsimg.com',
       show:false,
+      iconColor:false,
+      iconSize:false,
+      initIdx:0,
+      initSizeIdx:'',
+      modal2: false,
     }
   }
   componentDidMount(){
-    console.log(this.state)
     let productId = this.props.match.params.goodsId
     let params = {
       'app_name': 'shop_wap',
@@ -60,8 +69,38 @@ class Detail extends Component {
       longTitleVer: 2,
       _: 1600853214,
     }
+    let params1 = {
+      app_name: 'shop_wap',
+      app_version: '4.0',
+      api_key: '8cec5243ade04ed3a02c5972bcda0d3f',
+      mobile_platform: 2,
+      source_app: 'yd_wap',
+      warehouse:'VIP_NH',
+      fdc_area_id: 104104103,
+      province_id: 104104,
+      mars_cid: '1600332715541_5dd293d8cb51090865f1282cbdae2e3e',
+      mobile_channel: 'mobiles-||',
+      standby_id: 'nature',
+      'vendorProductId': '1187901176839454785',
+      mid: productId,
+      brandid: 1710685500,
+      device: 3,
+      'functions': 'buyLimit,foreShowActive,panelView,futurePriceView,showSingleColor,noProps,sku_price,active_price,prepay_sku_price,reduced_point_desc,surprisePrice,businessCode,promotionTips,invisible,flash_sale_stock,restrictTips,favStatus,banInfo,futurePrice,priceChart,priceView,quotaInfo,exclusivePrice,extraDetailImages',
+      prepayMsgType: 1,
+      promotionTipsVer: 5,
+      priceViewVer: 6,
+      supportSquare: 1,
+      isUseMultiColor: 1,
+      couponInfoVer: 2,
+      freightTipsVer: 3,
+      supportAllPreheatTipsTypes: 1,
+      salePriceTypeVer: 2,
+      wap_consumer: '',
+      mvip: true,
+      _: 1600909695,
+    }
     this.props.detailsInit(params)
-    window.addEventListener('scroll', this.changeScrollTopShow)
+    this.props.detailsSize(params1)
   }
   
   //返回上一级
@@ -73,18 +112,6 @@ class Detail extends Component {
     this.props.history.push('/cart')
   }
 
-  changeScrollTopShow(e) {
-    console.log(this.refs.bodyBox2.scrollTop)
-    if (document.documentElement.scrollTop < 400) {
-      this.setState({
-        show: false
-      })
-    }else {
-      this.setState({
-        show: true
-      })
-    }
-  }
    //添加动画效果
    scrollToTop() {
     const scrollToTop = window.setInterval(() => {
@@ -103,6 +130,29 @@ class Detail extends Component {
       this.setState({show:false})
     }
   }
+  onClose = key => () => {
+    this.setState({
+      [key]: false,
+    });
+  }
+  //颜色点击切换
+  handleColorChecked(index){
+    this.setState({
+      initIdx:index
+    })
+  }
+  //size点击切换
+  handleSizeChecked(index){
+    this.setState({
+      initSizeIdx:index
+    })
+  }
+  showModal = key => (e) => {
+    e.preventDefault(); // 修复 Android 上点击穿透
+    this.setState({
+      [key]: true,
+    });
+  }
   addGoods(){
     console.log(this.props.goodDetails)
     let { goodDetails }=this.props
@@ -114,11 +164,11 @@ class Detail extends Component {
       vip_price:goodDetails.max_vipshop_price
     }
     this.props.getGoods(data)
-    
   }
   render() {
-    let { goodDetails } = this.props
-    let { baseUrl,show } = this.state
+    let { goodDetails,goodSize } = this.props
+    // console.log(goodDetails)
+    let { baseUrl,show,initIdx,initSizeIdx } = this.state
     return (
       <div className="detail" ref="bodyBox2" onScroll={this.showBtn.bind(this)}>
         {/* 返回顶部 */}
@@ -138,7 +188,7 @@ class Detail extends Component {
           autoplay={true}
           infinite
         >
-          {goodDetails.previewImages&&goodDetails.previewImages.map(val => (
+          {goodDetails&&goodDetails.previewImages.map(val => (
             <a
               key={val.imageIndex}
               href="http://www.alipay.com"
@@ -191,10 +241,13 @@ class Detail extends Component {
           <div className="sku-color">
             <span>颜色</span>
             <div className="grid-select">
-              <div className="grid-option">
-                <img alt=""/>
-                <span></span>
+              {goodSize.length&&goodSize[1].values.map((ele,index)=>(
+                <div className={initIdx===index?'grid-option checked':'grid-option'} key={ele.id} onClick={this.handleColorChecked.bind(this,index)}>
+                  <img src={baseUrl+ele.icon.imageUrl} alt=""/>
+                  <span>{ele.name}</span>
+                  {initIdx===index&&<i className="iconfont icon-xuanzejiaobiao"></i>}
               </div>
+              ))}
             </div>
           </div>
           {/* 尺码 */}
@@ -204,18 +257,40 @@ class Detail extends Component {
               <span>查看尺码表</span>
             </div>
             <div className="grid-select">
-              <div className="grid-option"></div>
+              {goodSize.length&&goodSize[0].values.map((ele,index)=>(
+                <div className={index===initSizeIdx?'grid-option checked':'grid-option'} key={ele.id} onClick={this.handleSizeChecked.bind(this,index)}>{ele.name}
+                {index===initSizeIdx&&<i className="iconfont icon-xuanzejiaobiao"></i>}
+                </div>
+              ))}
             </div>
           </div>
         </div>
         {/* 商品参数 */}
-        <div className="product-param-container">
+        <div className="product-param-container"onClick={this.showModal('modal2')}>
           <div className="product-param">
             <span className="params">商品参数</span>
             <span className="text">弹性、版型、衣长等</span>
           </div>
           <i className="iconfont icon-shenglvehao"></i>
         </div>
+        <Modal
+          popup
+          visible={this.state.modal2}
+          onClose={this.onClose('modal2')}
+          animationType="slide-up"
+        >
+          <List renderHeader={() => <div>商品参数</div>} className="popup-list">
+            {goodDetails&&goodDetails.props.map((i, index) => (
+              <List.Item key={index}>
+                <span>{i.name}</span>
+                <span>{i.value}</span>
+              </List.Item>
+            ))}
+            <List.Item>
+              <Button type="primary" onClick={this.onClose('modal2')}>知道了</Button>
+            </List.Item>
+          </List>
+        </Modal>
         {/* 限购数量 */}
         <div className="product-num">
           <span>数量</span>

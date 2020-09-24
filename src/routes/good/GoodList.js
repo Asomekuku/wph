@@ -80,6 +80,7 @@ class GoodList extends Component {
   }
   render() {
     let { goodDetailList } = this.props
+    console.log(goodDetailList)
     return (
       <div className="goodlist">
         {this.createDetail(goodDetailList)}

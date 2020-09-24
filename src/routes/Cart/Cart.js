@@ -3,12 +3,12 @@ import './cart.scss'
 
 //引入这个高阶函数
 import { connect } from "react-redux";
-import { goodAdd,goodSub,getGoods,goodDel,time } from "../../store/actions/goodAction";
+import { goodAdd,goodSub,goodDel,time } from "../../store/actions/goodAction";
 
-import { NavBar, Icon,Modal, List,Checkbox, Button, WhiteSpace,WingBlank, } from 'antd-mobile';
+import { NavBar, Icon,Modal, List,Checkbox, } from 'antd-mobile';
 
 import { KBSecure,KBLocation,NoGoods } from '@/components/'
-
+import { withRouter } from 'react-router-dom'
 function mapStateToProps(store) {
     return {
         goods:store.good.goods,
@@ -38,9 +38,9 @@ class Cart extends React.Component{
                 { value: 1,check:false,num:500, label: '优惠500元' },
                 { value: 2,check:false,num:99999999999999, label: '不要钱' },
             ],
-    
             bol:true
         }
+        this.timer=null
     }
     componentDidMount(){
         if(localStorage.getItem('token')){
@@ -51,18 +51,16 @@ class Cart extends React.Component{
             console.log('未登入')
         }
 
-        if(this.state.bol){
-            setInterval(()=>{
+        if(this.state.bol && this.props.goods.length){
+           this.timer= setInterval(()=>{
                 this.props.time()
-                // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
                 this.setState({bol:false})
             },1000)
             this.setState({isTime:true})
         }
-        
-        
-        
-        // let date_over = date
+    }
+    componentWillUnmount(){
+        clearInterval(this.timer)
     }
     //根据数据生成商品
     createShopCart(){
@@ -180,7 +178,7 @@ class Cart extends React.Component{
     }
 
     render(){
-        let { user,list_data,discount_money } =this.state
+        let { user,list_data } =this.state
         let { goods } = this.props
         console.log('状态管理goods',goods)
         
@@ -193,8 +191,7 @@ class Cart extends React.Component{
                         {/* 头部 */}
                         <NavBar
                             mode="light"
-                            icon={<Icon type="left" />}
-                            onLeftClick={() => this.props.history.go(-1)}
+                            icon={<Icon type="left" onClick={()=>this.props.history.go(-1)}/>}
                         >确认订单{`还剩${this.props.minute}分${this.props.second}`}
                         </NavBar> 
 
@@ -278,7 +275,7 @@ class Cart extends React.Component{
     }
 }
 
-export default connect(mapStateToProps, mapActionToProps)(Cart);
+export default connect(mapStateToProps, mapActionToProps)(withRouter(Cart));
 
 
 {/* <List renderHeader={() => <div>委托买入</div>} className="popup-list">

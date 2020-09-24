@@ -6,6 +6,12 @@ export const GET_HOME_NAV = 'GET_HOME_NAV'  //导航栏
 export const GET_HOME_CART = 'GET_HOME_CART'  //卡片
 
 
+export const GET_SEARCH_HOST = 'GET_SEARCH_HOST'  //热门搜索
+export const GET_SEARCH_LIST = 'GET_SEARCH_LIST'  //搜索列表
+
+
+
+
 
 // export const GET_HOME_CATITEMS = 'GET_HOME_CATITEMS'    //分类
 // export const GET_HOME_FLOORDATA = 'GET_HOME_FLOORDATA'  //专区
@@ -14,6 +20,7 @@ export const GET_HOME_CART = 'GET_HOME_CART'  //卡片
 export const GET_GOOD_LIST = 'GET_GOOD_LIST'            //商品分类
 export const GOOD_CHILD_UPD = 'GOOD_CHILD_UPD'            //商品分类
 export const GOOD_DETAIL = 'GOOD_DETAIL'      //商品详情
+export const GOOD_SIZE_COLOR = 'GOOD_SIZE_COLOR' //商品尺寸颜色
 
 export const FENQ = 'EFNQ'  //疯抢
 export const FENQLEFT = 'FENQLEFT'  //疯抢左边导航

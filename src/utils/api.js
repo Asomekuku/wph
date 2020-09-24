@@ -28,6 +28,15 @@ export function getDetails(params){
   })
 }
 
+//获取商品颜色与尺寸
+export function getSizeColor(params){
+  return fetch({
+    url:'http://localhost:8080/vips-mobile/rest/shop/goods/vendorSkuList/v4',
+    method:'GET',
+    params
+  })
+}
+
 // 获取商品详情 monkey
 export function axiosGoodDetails(params){
     return fetch({
@@ -144,6 +153,22 @@ export function fqList(params){
 }
 
 
+// 搜索页面的热门搜索
+export function fetchHost(params){
+    return fetch({
+        url:"http://localhost:8080/vips-mobile/rest/shop/search/hotwordsByGos",
+        methods:"GET",
+        params
+    })
+}
+// 搜索列表
+export function fetchList(params){
+    return fetch({
+        url:"http://localhost:8080/vips-mobile/rest/shop/search/suggest",
+        methods:"GET",
+        params
+    })
+}
 export default {
     axiosGoodDetails
 }
