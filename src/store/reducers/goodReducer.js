@@ -36,14 +36,6 @@ export default function goodReducer(state=initState,action){
         case GOOD_DETAIL:
           newState.goodDetails = action.payload
           return newState
-            newState.goodInitList = action.payload.current_node.children
-            newState.goodChooseList = action.payload.cate_lv1
-            return newState;
-
-        case GOOD_CHILD_UPD:
-            newState.goodDetailList = action.payload
-            return newState
-
         case GOOD_UPD:
             newState.goods.push(action.payload)
             return newState
