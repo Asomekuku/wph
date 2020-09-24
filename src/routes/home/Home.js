@@ -98,9 +98,20 @@ class Home extends React.Component {
     });
   };
   // 导航栏的跳转
-  ClickCation(i){
-    let arr=[26594,26595,109274,75044,26596,83774,31333,27916,188532,288533]
-    this.props.history.push("/good/"+arr[i])
+  ClickCation(i) {
+    let arr = [
+      26594,
+      26595,
+      26596,
+      75044,
+      109274,
+      26602,
+      26598,
+      288532,
+      27916,
+      280269,
+    ];
+    this.props.history.push("/good/" + arr[i]);
   }
   // 回到顶部
   handleUpShow = () => {
@@ -296,23 +307,28 @@ class Home extends React.Component {
           </div>
           {/* 导航栏 */}
           <div className="homeNavImg">
-            {Navs &&
-              Navs.map((v, i) => (
+            {Navs.length != 0 &&
+              Navs[0].img.map((v, i) => (
                 <div
                   className="homeNavImg-item"
                   key={i}
                   style={{
-                    background: "url(" + v.img + ") no-repeat 0px 0px/100%",
+                    background: "url(" + v + ") no-repeat 0px 0px/100%",
                   }}
-                >
-                  {v.arr &&
-                    v.arr.map((c,i) => (
-                      <div className="img-item" key={c.data.id}>
-                        <img src={c.data.imageUrl} alt="" onClick={this.ClickCation.bind(this,i)} />
-                      </div>
-                    ))}
-                </div>
+                ></div>
               ))}
+            <div className="nav-item">
+              {Navs.length != 0 &&
+                Navs[0].arr.map((c, i) => (
+                  <div className="img-item" key={c.data.id}>
+                    <img
+                      src={c.data.imageUrl}
+                      alt=""
+                      onClick={this.ClickCation.bind(this, i)}
+                    />
+                  </div>
+                ))}
+            </div>
           </div>
 
           {/* 大卖特卖区域 */}

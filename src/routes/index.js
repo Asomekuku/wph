@@ -36,7 +36,7 @@ const Snap = loadable(()=>import('./snap/snap'))
         title:'good',
         icon:<Icon type='cross-circle'></Icon>,
         selectedIcon:<Icon type='cross-circle'></Icon>,
-        path:'/good',
+        path:'/good/:id',
         component:Good,
         children:[
             // 二级页面
