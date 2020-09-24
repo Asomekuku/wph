@@ -1,14 +1,15 @@
 import React from 'react'
 import { NavBar, Icon } from 'antd-mobile';
 import img from '@/utils/img'
+import { withRouter } from 'react-router-dom'
 
-export default function NoGoods(){
+function NoGoods(props){
     return (
         <div className="no-cart-goods">
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={() => console.log('onLeftClick')}
+                onLeftClick={() => props.history.go(-1)}
             >购物车</NavBar>
             <div className="cart-show">
                 <img src={img.cart_bg} alt=""/>
@@ -19,3 +20,5 @@ export default function NoGoods(){
         </div>
     )
 }
+
+export default withRouter(NoGoods)

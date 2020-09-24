@@ -27,32 +27,3 @@ class KBTabBar extends React.Component{
 }
 
 export default withRouter(KBTabBar)
-
-// <TabBar
-// unselectedTintColor="#949494"
-// tintColor="#33A3F4"
-// barTintColor="white"
-// hidden={this.state.hidden}
-// >
-//     {this.createTabBar()}
-// </TabBar>
-
-
-//创建路由
-// createTabBar(){
-//     let arr=[]
-//     routes.map(ele=>{
-//         arr.push(
-//             <TabBar.Item
-//                     title={ele.title}
-//                     key={ele.id}
-//                     icon={ele.icon}
-//                     selectedIcon={ele.icon}
-//                     onPress={this.jump.bind(this,ele.path)}
-//                 >
-//             </TabBar.Item>
-//         )
-//         return null
-//     })
-//     return arr
-// }

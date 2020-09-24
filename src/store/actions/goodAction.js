@@ -108,6 +108,12 @@ export function getGoods(params){
     })
   }
 }
+export function getGoods(payload){
+  return {
+      type:GOOD_UPD,
+      payload
+  }
+}
 
 export function goodAdd(payload){
   return {

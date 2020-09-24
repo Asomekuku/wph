@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import './detail.scss'
 import { connect } from 'react-redux'
+<<<<<<< HEAD
 import { getGoodDetail,getSize } from '../../store/actions/goodAction'
+=======
+import { getGoodDetail,getGoods } from '../../store/actions/goodAction'
+>>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
 import { Carousel } from 'antd-mobile';
 import { Modal, List,Button } from 'antd-mobile';
 
@@ -17,8 +21,13 @@ function mapActionToProps(dispatch){
   return {
     //商品详情
     detailsInit:(params)=>dispatch(getGoodDetail(params)),
+<<<<<<< HEAD
     //商品大小颜色
     detailsSize:(params)=>dispatch(getSize(params))
+=======
+    getGoods:(payload)=>dispatch(getGoods(payload))
+
+>>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
   }
 }
 class Detail extends Component {
@@ -110,25 +119,41 @@ class Detail extends Component {
     this.props.history.push('/cart')
   }
 
+<<<<<<< HEAD
 
+=======
+  changeScrollTopShow(e) {
+    console.log(this.refs.bodyBox2.scrollTop)
+    if (document.documentElement.scrollTop < 400) {
+      this.setState({
+        show: false
+      })
+    }else {
+      this.setState({
+        show: true
+      })
+    }
+  }
+>>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
    //添加动画效果
    scrollToTop() {
     const scrollToTop = window.setInterval(() => {
-      let pos = this.refs.bodyBox.scrollTop;
+      let pos = this.refs.bodyBox2.scrollTop;
       if ( pos > 0 ) {
-        this.refs.bodyBox.scrollTo( 0, pos - 20 );
+        this.refs.bodyBox2.scrollTo( 0, pos - 20 );
       } else {
         clearInterval( scrollToTop );
       }
     }, 1);
   }
   showBtn(){
-    if(this.refs.bodyBox.scrollTop > 400){
+    if(this.refs.bodyBox2.scrollTop > 400){
       this.setState({show:true})
     }else{
       this.setState({show:false})
     }
   }
+<<<<<<< HEAD
   onClose = key => () => {
     this.setState({
       [key]: false,
@@ -151,13 +176,27 @@ class Detail extends Component {
     this.setState({
       [key]: true,
     });
+=======
+  addGoods(){
+    console.log(this.props.goodDetails)
+    let { goodDetails }=this.props
+    let data = {
+      good_num:1,
+      img:this.state.baseUrl+goodDetails.previewImages[0].imageUrl,
+      market_price:goodDetails.max_market_price,
+      title:goodDetails.longTitle,
+      vip_price:goodDetails.max_vipshop_price
+    }
+    this.props.getGoods(data)
+    
+>>>>>>> 3ef240de4c57dcb426d86bbb0510aa45e2e1fb78
   }
   render() {
     let { goodDetails,goodSize } = this.props
     // console.log(goodDetails)
     let { baseUrl,show,initIdx,initSizeIdx } = this.state
     return (
-      <div className="detail" ref="bodyBox" onScroll={this.showBtn.bind(this)}>
+      <div className="detail" ref="bodyBox2" onScroll={this.showBtn.bind(this)}>
         {/* 返回顶部 */}
         {show && <div className="back-top" onClick={this.scrollToTop.bind(this)}>
           <i className="iconfont icon-xiangshangjiantou"></i>
@@ -371,7 +410,7 @@ class Detail extends Component {
           <div className="shop-cart" onClick={this.goCart.bind(this)}>
           <i className="iconfont icon-gouwuche"></i>
           </div>
-          <div className="add-cart">加入购物车</div>
+          <div className="add-cart" onClick={this.addGoods.bind(this)}>加入购物车</div>
         </div>
       </div>
     )

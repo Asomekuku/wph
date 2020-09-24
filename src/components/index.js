@@ -4,7 +4,7 @@ import KBSecure from './kbcart/KBSecure'
 import KBLocation from './kbcart/KBLocation'
 import NoGoods from './kbcart/NoGoods'
 
-import HTabBar from './common/HTaBar'
+import HTabBar from './NavBar/HTaBar'
 
 export  {
     KBTabBar,

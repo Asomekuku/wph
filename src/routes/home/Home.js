@@ -8,7 +8,7 @@ import {
   getHomeCart,
 } from "../../store/actions/homeAction";
 import { HTabBar, CartBtn } from "@/components/";
-import data from "../../josn/home.json";
+import data from "../../assets/josn/home.json";
 //引入这个高阶函数
 import { connect } from "react-redux";
 // 引入antd模块
@@ -43,7 +43,7 @@ class Home extends React.Component {
       upShow: false,
     };
     this.home = React.createRef();
-    this.Parameter=(num)=>{
+    this.Parameter = (num) => {
       return {
         app_name: "shop_wap",
         app_version: 4.0,
@@ -67,14 +67,15 @@ class Home extends React.Component {
         channel_name: "今日推荐",
         _: num,
       };
-    }
-    this.params=this.Parameter(1600699471)
-    this.params1 =this.Parameter(1600767029);
-    this.params2 =this.Parameter(11600773382);
-    this.params3 =this.Parameter(1600776414);
-    this.list=this.Parameter(1600782219)
-    this.list.load_more_token="eyJjaGFubmVsX2lkIjoiNDkiLCJ0c2lmdCI6IjEiLCJicmFuZF9vZmZzZXQiOiIwIiwiYnJhbmRfcmVmZXJfaW5kZXgiOiI5IiwidG9waWNfZ3JvdXAiOiIwIiwid2VpeGluQnJhbmRUaHJlZSI6IjAifQ==";
-    this.params4=this.list
+    };
+    this.params = this.Parameter(1600699471);
+    this.params1 = this.Parameter(1600767029);
+    this.params2 = this.Parameter(11600773382);
+    this.params3 = this.Parameter(1600776414);
+    this.list = this.Parameter(1600782219);
+    this.list.load_more_token =
+      "eyJjaGFubmVsX2lkIjoiNDkiLCJ0c2lmdCI6IjEiLCJicmFuZF9vZmZzZXQiOiIwIiwiYnJhbmRfcmVmZXJfaW5kZXgiOiI5IiwidG9waWNfZ3JvdXAiOiIwIiwid2VpeGluQnJhbmRUaHJlZSI6IjAifQ==";
+    this.params4 = this.list;
   }
 
   // 切换标题栏的高亮样式
@@ -96,6 +97,22 @@ class Home extends React.Component {
       MaunShow: true,
     });
   };
+  // 导航栏的跳转
+  ClickCation(i) {
+    let arr = [
+      26594,
+      26595,
+      26596,
+      75044,
+      109274,
+      26602,
+      26598,
+      288532,
+      27916,
+      280269,
+    ];
+    this.props.history.push("/good/" + arr[i]);
+  }
   // 回到顶部
   handleUpShow = () => {
     let timer = setInterval(() => {
@@ -112,46 +129,50 @@ class Home extends React.Component {
     }, 50);
   };
   // 渲染页面
- Rendering=() => {
-  let { content } = this.props;
-    return content.map((n,i)=>{
-      if(i%2===0){
-        return <div className="content-item2" key={i}>
-        {content[i] &&
-          content[i].item.map((v) => (
-            <div className="homeCart-item" key={v.brand_id}>
-              <img src={v.brand_image} alt="" />
-              <div className="Cart-item-text">
-                <div className="item-text-left">
-                  <h3>{v.title}</h3>
-                  <div className="text-left-bottom">
-                    <p>{v.atmosphere_text}</p>
-                    <div className="bottom-text">
-                      <span>{parseFloat(v.discount)}</span>
-                      {v.discount.replace(/[1-9]/g, "")}
+  Rendering = () => {
+    let { content } = this.props;
+    return content.map((n, i) => {
+      if (i % 2 === 0) {
+        return (
+          <div className="content-item2" key={i}>
+            {content[i] &&
+              content[i].item.map((v) => (
+                <div className="homeCart-item" key={v.brand_id}>
+                  <img src={v.brand_image} alt="" />
+                  <div className="Cart-item-text">
+                    <div className="item-text-left">
+                      <h3>{v.title}</h3>
+                      <div className="text-left-bottom">
+                        <p>{v.atmosphere_text}</p>
+                        <div className="bottom-text">
+                          <span>{parseFloat(v.discount)}</span>
+                          {v.discount.replace(/[1-9]/g, "")}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="item-text-right">
+                      <span>{v.remain_days}</span>
                     </div>
                   </div>
                 </div>
-                <div className="item-text-right">
-                  <span>{v.remain_days}</span>
+              ))}
+          </div>
+        );
+      } else {
+        return (
+          <div className="content-item1" key={i}>
+            {content[i] &&
+              content[i].item.map((v) => (
+                <div className="homeCartImg" key={v.id}>
+                  <img src={v.imageUrl} alt="" />
                 </div>
-              </div>
-            </div>
-          ))}
-      </div>
-      }else{
-          return <div className="content-item1" key={i}>
-          {content[i] &&
-            content[i].item.map((v) => (
-              <div className="homeCartImg" key={v.id}>
-                <img src={v.imageUrl} alt="" />
-              </div>
-            ))}
-        </div>
+              ))}
+          </div>
+        );
       }
-    })
- }
- 
+    });
+  };
+
   //挂载完成调接口
   componentDidMount() {
     this.props.getNavTitle(this.params);
@@ -169,20 +190,20 @@ class Home extends React.Component {
       }
       // 触底事件
       // 可滚动的高度
-      let shouldHeight=this.home.current.scrollHeight
-      let clientHeight=this.home.current.clientHeight
-      if(shouldHeight-clientHeight-scrollTop<=10){
-        let index =Math.floor(Math.random()*4+1)
-        let NumList=this.Parameter(data.Request[index].num)
-        NumList.load_more_token=data.Request[index].load_more_token
-        let params5=NumList
+      let shouldHeight = this.home.current.scrollHeight;
+      let clientHeight = this.home.current.clientHeight;
+      if (shouldHeight - clientHeight - scrollTop <= 10) {
+        let index = Math.floor(Math.random() * 4 + 1);
+        let NumList = this.Parameter(data.Request[index].num);
+        NumList.load_more_token = data.Request[index].load_more_token;
+        let params5 = NumList;
         this.props.getCart(params5);
       }
     });
   }
 
   render() {
-    let { navList, maunList, Navs, } = this.props;
+    let { navList, maunList, Navs } = this.props;
     return (
       <div className="home">
         {/* 广告栏 */}
@@ -286,23 +307,28 @@ class Home extends React.Component {
           </div>
           {/* 导航栏 */}
           <div className="homeNavImg">
-            {Navs &&
-              Navs.map((v, i) => (
+            {Navs.length != 0 &&
+              Navs[0].img.map((v, i) => (
                 <div
                   className="homeNavImg-item"
                   key={i}
                   style={{
-                    background: "url(" + v.img + ") no-repeat 0px 0px/100%",
+                    background: "url(" + v + ") no-repeat 0px 0px/100%",
                   }}
-                >
-                  {v.arr &&
-                    v.arr.map((c) => (
-                      <div className="img-item" key={c.data.id}>
-                        <img src={c.data.imageUrl} alt="" />
-                      </div>
-                    ))}
-                </div>
+                ></div>
               ))}
+            <div className="nav-item">
+              {Navs.length != 0 &&
+                Navs[0].arr.map((c, i) => (
+                  <div className="img-item" key={c.data.id}>
+                    <img
+                      src={c.data.imageUrl}
+                      alt=""
+                      onClick={this.ClickCation.bind(this, i)}
+                    />
+                  </div>
+                ))}
+            </div>
           </div>
 
           {/* 大卖特卖区域 */}
@@ -409,10 +435,8 @@ class Home extends React.Component {
             />
           </div>
           {/* 卡片区域 */}
-          <div className="homeCart">
-            {this.Rendering()}
-           </div>
-          </div>
+          <div className="homeCart">{this.Rendering()}</div>
+        </div>
         {/* 回到顶部 */}
         {this.state.upShow ? (
           <div className="homeCartUp" onClick={this.handleUpShow}>

@@ -151,7 +151,22 @@ export function fqList(params){
         params
     })
 }
-
+// 搜索页面的热门搜索
+export function fetchHost(params){
+    return fetch({
+        url:"http://localhost:8080/vips-mobile/rest/shop/search/hotwordsByGos",
+        methods:"GET",
+        params
+    })
+}
+// 搜索列表
+export function fetchList(params){
+    return fetch({
+        url:"http://localhost:8080/vips-mobile/rest/shop/search/suggest",
+        methods:"GET",
+        params
+    })
+}
 export default {
     axiosGoodDetails
 }
