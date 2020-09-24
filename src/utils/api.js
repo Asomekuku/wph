@@ -19,8 +19,16 @@ export function getClassDetail(params){
   })
 }
 
+//获取商品详情 Ming
+export function getDetails(params){
+  return fetch({
+    url:'http://localhost:8080/vips-mobile/rest/shopping/wap/product/detail/v5',
+    method:'GET',
+    params
+  })
+}
 
-// 获取商品详情
+// 获取商品详情 monkey
 export function axiosGoodDetails(params){
     return fetch({
         url:'http://api.tbk.dingdanxia.com/vip/item_info',
@@ -78,6 +86,30 @@ export function loginCheck(data){
         data
     })
 }
+
+// 轮播图
+export function fetchCatSwiper(params){
+    return axios({
+        url:'http://localhost:8080/vips-mobile/rest/layout/h5/channel/data',
+        methods:'GET',
+        params
+    })
+}
+//导航栏
+export function fetchCatNav(params){
+    return axios({
+        url:'http://localhost:8080/vips-mobile/rest/layout/h5/channel/data',
+        methods:'GET',
+        params
+    })
+}
+// 卡片区
+export function fetchCatCart(params){
+    return axios({
+        url:"http://localhost:8080/vips-mobile/rest/layout/h5/channel/data",
+        methods:"GET",
+        params
+    })}
 //退出登录
 export function logout(data){
     return fetch({

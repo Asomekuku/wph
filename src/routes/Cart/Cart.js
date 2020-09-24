@@ -19,7 +19,6 @@ function mapStateToProps(store) {
   //把action生成器方法，映射到props上面
   function mapActionToProps(dispatch) {
     return {
-        getGoods:(params)=>dispatch(getGoods(params)),
         goodAdd:(idx)=>dispatch(goodAdd(idx)),
         goodSub:(idx)=>dispatch(goodSub(idx)),
         goodDel:(idx)=>dispatch(goodDel(idx)),
@@ -47,22 +46,19 @@ class Cart extends React.Component{
         if(localStorage.getItem('token')){
             console.log('已登录')
             this.setState({user:true})      //打开开关
-
-            //获取假数据
-            this.props.getGoods({
-                apikey:'e66p5gkSEl3lmPJ4bV28mbUe8I78ewhX',
-                id:'6918181929819039310'
-            })
+            
         }else{
             console.log('未登入')
         }
 
-        // setInterval(()=>{
-        //     this.props.time()
-        //     // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
-        //     this.setState({bol:false})
-        // },1000)
-        this.setState({isTime:true})
+        if(this.state.bol){
+            setInterval(()=>{
+                this.props.time()
+                // console.log(`多少分${this.props.minute}多少秒${this.props.second}`)
+                this.setState({bol:false})
+            },1000)
+            this.setState({isTime:true})
+        }
         
         
         
@@ -186,10 +182,10 @@ class Cart extends React.Component{
     render(){
         let { user,list_data,discount_money } =this.state
         let { goods } = this.props
-        // console.log('状态管理goods',goods)
+        console.log('状态管理goods',goods)
         
         return (
-            <div className="cart">
+            <div className="cart" ref="bodyBox2">
                 {/* 三目运算符判断是否登入成功来显示对应的页面 */}
 
                 {goods.length
