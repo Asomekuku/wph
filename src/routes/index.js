@@ -18,9 +18,14 @@ const Snap = loadable(()=>import('./snap/snap'))
         component:Home,
         children:[
             {
-                id:10,
+                id:1000,
                 path:"/app",
                 component:loadable(()=>import('./home/app'))
+            },
+            {
+                id:1001,
+                path:'/search',
+                component:loadable(()=>import('./search/search'))
             }
         ]
     },

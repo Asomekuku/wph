@@ -6,6 +6,12 @@ export const GET_HOME_NAV = 'GET_HOME_NAV'  //导航栏
 export const GET_HOME_CART = 'GET_HOME_CART'  //卡片
 
 
+export const GET_SEARCH_HOST = 'GET_SEARCH_HOST'  //热门搜索
+export const GET_SEARCH_LIST = 'GET_SEARCH_LIST'  //搜索列表
+
+
+
+
 
 // export const GET_HOME_CATITEMS = 'GET_HOME_CATITEMS'    //分类
 // export const GET_HOME_FLOORDATA = 'GET_HOME_FLOORDATA'  //专区
