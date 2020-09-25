@@ -58,7 +58,7 @@ function mapAction(dispatch){
                     <img src={ele.square_image} alt='' onClick={this.goDetail.bind(this,ele.product_id)}/>
                     <div className={sty.price}>    
                         <span>特卖价</span>
-                        <span>{ele.promotion_price}</span>
+                        <span>￥{ele.promotion_price}</span>
                         <span>{ele.market_price}</span>
                         <span>{ele.discount}折</span>
                     </div>

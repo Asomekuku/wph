@@ -20,7 +20,7 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
      }
     goHome(){
        
-        this.props.history.push('/home')
+        this.props.history.goBack()
     }
     //挂载完成
     componentDidMount(){
