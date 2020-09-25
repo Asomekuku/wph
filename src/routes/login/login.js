@@ -187,8 +187,9 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
                             ref={el => this.inputRef = el}
                         >密码</InputItem>
                         <Button type="primary" onClick={this.regi.bind(this)} disabled={disabled}>手机号注册登录</Button><WhiteSpace />
+                        <img className='img' onClick={this.iscut.bind(this)} src={passimg} alt=''/>
+
                     </List>                
-                    <img className='img' onClick={this.iscut.bind(this)} src={passimg} alt=''/>
                 </div>
             </div>
         )
