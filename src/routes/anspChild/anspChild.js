@@ -45,13 +45,13 @@ function mapAction(dispatch){
      //页面不见了
       loadingToast() {
         Toast.loading('Loading...', 1, () => {
-          console.log('Load complete !!!');
+       
         });
       }
      //创建元素
      createList(){
          let index=this.props.match.params.index
-         console.log(index)
+     
          if(this.props.fengqList.length){
             return   this.props.fengqList[index].products.map(ele=>(
                 <div key={ele.square_image}>
@@ -77,7 +77,7 @@ function mapAction(dispatch){
         this.props.history.push('/good/detail/'+id)
      }
     render() {
-        console.log(this.props)
+       
  
 
         return (

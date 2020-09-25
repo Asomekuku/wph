@@ -52,7 +52,7 @@ export function getDetailList(params){
 export function getGoodDetail(params){
   return function(dispatch){
     getDetails(params).then(res=>{
-      console.log(res.data.data)
+    
       dispatch({
         type:GOOD_DETAIL,
         payload:res.data.data.product,
