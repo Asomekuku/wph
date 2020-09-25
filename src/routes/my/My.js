@@ -88,6 +88,10 @@ const Item = List.Item;
             this.props.history.push('/login/sign')
         }
     }
+    //去到待付款
+    goBligation(){
+        this.props.history.push('/obligation')
+    }
     render(){
         return (
             <div className='kk_my'>
@@ -105,7 +109,9 @@ const Item = List.Item;
                 </div>
                 {/* 待付款，待收货，全部订单 */}
                 <div className='kk_take'>
-                    <div>
+                    <div
+                         onClick={this.goBligation.bind(this)}
+                    >
                         <span>
                              <WalletOutlined />
                         </span>

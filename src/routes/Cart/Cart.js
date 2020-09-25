@@ -180,7 +180,7 @@ class Cart extends React.Component{
     render(){
         let { user,list_data } =this.state
         let { goods } = this.props
-        console.log('状态管理goods',goods)
+        // console.log('状态管理goods',goods)
         
         return (
             <div className="cart" ref="bodyBox2">
