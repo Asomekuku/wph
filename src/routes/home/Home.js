@@ -80,6 +80,9 @@ class Home extends React.Component {
 
   // 切换标题栏的高亮样式
   activeClick = (i) => {
+    if(i===1){
+      this.props.history.push("/snap")
+    }
     this.setState({
       active: i,
     });

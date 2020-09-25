@@ -2,7 +2,8 @@ import {FENQ,FENQLEFT , SNAPLIST} from '../actionType'
 
 const initState={
     spanLeftList:[],
-    snapList:[]
+    snapList:[],
+    fengqList:[],//疯抢数据官网
 }
 
 export default function Snap(state=initState,action){
@@ -10,6 +11,7 @@ export default function Snap(state=initState,action){
     switch(action.type){
         // 疯抢
         case FENQ:
+            newState.fengqList=action.payload
         return newState
         //疯抢左边导航
         case FENQLEFT:

@@ -142,6 +142,8 @@ export function fqList(params){
         params
     })
 }
+
+
 // 搜索页面的热门搜索
 export function fetchHost(params){
     return fetch({

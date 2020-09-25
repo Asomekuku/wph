@@ -2,24 +2,55 @@ import React from 'react'
 import {getSnapLeft , getSnap ,snapList} from '../../store/actions/snapAction'
 import './snap.scss'
 import {connect} from 'react-redux'
+
 class Snap extends React.Component{
     constructor(props){
         super(props)
-        this.state={
+        this.state={  
             changeTypeNum:0,
             index:0,//导航下标
-
+            
         }
     }
     componentDidMount(){
-        //数据接口
-        this.rightList()
-
         //左边导航 
-        this.SnapLeftFn()
-    
-      
+        this.SnapLeftFn()    
+        this.fenqFN()  //内容
+       
+     
     }
+   
+    //fenqFN
+    fenqFN(arr){
+        //接口
+       //转字符串进行传参
+        let arr1=[100779186,100755633,100755323,100752008,100753509,100752573,100755853,100755748,100752007,100752201,100752203,100752951,100752410,100714744,100752309,100779925,100757267,100752379,100757182,100752014,100752143,100760104,100754193,100761027,100752774,100765073,100751868,100752593,100752459,100754700,100760938,100745857,100752406,100709859,100754279,100751980,100717421,100754703,100752984,100755109]
+        if(arr){
+             arr=arr
+        }else{
+            arr=arr1
+        }
+        if(arr){
+            arr=arr.join(',')
+            this.props.getSnap_d({
+                dept_id: '3,337',
+                brands_id: arr ,
+                api_key: '8cec5243ade04ed3a02c5972bcda0d3f',
+                warehouse: 'VIP_NH',
+                client: 'phone',
+                product_num: 4,
+                mars_cid: '1600340640947_df6bdb3024177fc2256b38275ed898b8',
+                mobile_platform: 2,
+                fdc_area_id: 104104101,
+                platform: 2,
+                app_version: 1.0,
+                time: 0,
+                is_front: 1
+            }) 
+        }
+
+    }
+  
     //创建掉接口左边
     SnapLeftFn(){
         this.props.getSnapLeft_d({
@@ -38,14 +69,7 @@ class Snap extends React.Component{
             is_front: 1
         })
     }
-    //右边内容Fn
-    rightList(idx){
-        this.props.getsnapList({
-            apikey:'e66p5gkSEl3lmPJ4bV28mbUe8I78ewhX',
-            channelType:this.state.changeTypeNum,
-            page:idx ? idx+1 : 1
-        })
-    }
+
     //创建左边导航
     createLeft(){
        return this.props.spanLeftList.map((ele,idx)=>(
@@ -62,19 +86,26 @@ class Snap extends React.Component{
     }
     //点击导航
     click(idx){
-        this.setState({
-            index:idx
-        })
-        if(idx<5){
-            this.rightList(idx)
+     
+        this.setState(state=>({index:idx}))
+       if(this.props.spanLeftList.length){ 
+                //滚轮向下滚动，渲染数据
+                let arr=this.props.spanLeftList[idx].brandIds    //获取相应的id
+                arr=arr.split(',')   //转数组
+                let arr1=arr.slice(0,30) //数据
+                //调接口
+                this.fenqFN(arr1)
+            
         }
     }
     //创建右边内容
     createSnapList(){
         if(true){
-            return this.props.snapList.map(ele=>(      
-                <div key={ele.goodsThumbUrl}>
-                    <img src={ele.goodsThumbUrl} alt=''/>
+            return this.props.fengqList.map(ele=>(      
+                <div key={ele.brand.brand_image}>
+                    <img src={ele.brand.square_image} alt=''/>
+                    <img src={ele.brand.logo} alt=''/>
+                    <div>{ele.brand.product_count}款新货</div>
                     <span>
                         {ele.goodsName}
                     </span>
@@ -82,22 +113,39 @@ class Snap extends React.Component{
             ))
             
         }
-       
-        
+     
     }
+ 
+   
     render(){
-        let {spanLeftList} =this.props 
+       let {index} = this.state
+       console.log(this.props.spanLeftList)
+       console.log(this.props.fengqList)
+       let i=0
+       let {spanLeftList} = this.props
+      
         return(
-            <div className='kk_snap'>
-                {/* 左 */}
-                <div className='snap_one'>
-                    {this.createLeft()}
+            <div className='snap_box'>
+                {/* 上 */}
+                <div className='snap_top'>
+                    <img src='https://h2.appsimg.com/b.appsimg.com/upload/mst/2020/09/22/154/ea56b5cb623e1a13dd3398f46864f30c.jpg!75.webp' alt=''/>
                     
                 </div>
-                {/* //右 */}
-                <div className='two'>
-                    <p>{spanLeftList.length ? spanLeftList[this.state.index].tab_name : ''}</p>
-                    {this.createSnapList()}
+
+                {/* 下 */}
+                <div className='kk_snap'>
+                    {/* 左 */}
+                    <div className='snap_one'>
+                        {this.createLeft()}
+                        
+                    </div>
+                    {/* //右 */}
+                    <div className='two'>
+                        <p>{spanLeftList.length ? spanLeftList[index].tab_name : ''}</p>
+                        {/* 右边内容 */}
+                        {this.createSnapList()}
+                    </div>
+
                 </div>
             </div>
         )
@@ -105,13 +153,13 @@ class Snap extends React.Component{
 }
 function mapState(store){
     return{
-        spanLeftList:store.snap.spanLeftList,
-        snapList:store.snap.snapList
+        spanLeftList:store.snap.spanLeftList,//左边导航
+        fengqList:store.snap.fengqList,//官网数据
     }
 }
 function mapAction(dispatch){
     return{
-        getSnapLeft_d:(params)=>dispatch(getSnapLeft(params)),
+        getSnapLeft_d:(params)=>dispatch(getSnapLeft(params)),//左边导航
         getSnap_d:(params)=>dispatch(getSnap(params)),
         getsnapList:(params)=>dispatch(snapList(params))
     }
