@@ -3,8 +3,7 @@ import './detail.scss'
 import { connect } from 'react-redux'
 import { getGoodDetail,getSize,getGoods } from '../../store/actions/goodAction'
 import { Carousel } from 'antd-mobile';
-import { Modal, List,Button } from 'antd-mobile';
-
+import { Toast, Modal, List,Button } from 'antd-mobile';
 //共享state中的数据，可以用this.props进行访问
 function mapStateToProps(store){
   return{
@@ -34,7 +33,11 @@ class Detail extends Component {
       initIdx:0,
       initSizeIdx:'',
       modal2: false,
+      //规格
+      size:'',
+      color:'黑色',
     }
+    this.scrollBox = React.createRef()
   }
   componentDidMount(){
     let productId = this.props.match.params.goodsId
@@ -115,16 +118,16 @@ class Detail extends Component {
    //添加动画效果
    scrollToTop() {
     const scrollToTop = window.setInterval(() => {
-      let pos = this.refs.bodyBox2.scrollTop;
+      let pos = this.scrollBox.current.scrollTop;
       if ( pos > 0 ) {
-        this.refs.bodyBox2.scrollTo( 0, pos - 20 );
+        this.scrollBox.current.scrollTo( 0, pos - 20 );
       } else {
         clearInterval( scrollToTop );
       }
     }, 1);
   }
   showBtn(){
-    if(this.refs.bodyBox2.scrollTop > 400){
+    if(this.scrollBox.current.scrollTop > 400){
       this.setState({show:true})
     }else{
       this.setState({show:false})
@@ -136,15 +139,19 @@ class Detail extends Component {
     });
   }
   //颜色点击切换
-  handleColorChecked(index){
+  handleColorChecked(index,name){
+    console.log(name)
     this.setState({
-      initIdx:index
+      initIdx:index,
+      color:name
     })
   }
   //size点击切换
-  handleSizeChecked(index){
+  handleSizeChecked(index,size){
+    console.log(size)
     this.setState({
-      initSizeIdx:index
+      initSizeIdx:index,
+      size:size
     })
   }
   showModal = key => (e) => {
@@ -154,23 +161,34 @@ class Detail extends Component {
     });
   }
   addGoods(){
-    console.log(this.props.goodDetails)
-    let { goodDetails }=this.props
-    let data = {
-      good_num:1,
-      img:this.state.baseUrl+goodDetails.previewImages[0].imageUrl,
-      market_price:goodDetails.max_market_price,
-      title:goodDetails.longTitle,
-      vip_price:goodDetails.max_vipshop_price
+    let { size } = this.state
+    if(size !== ''){
+      console.log(this.props.goodDetails)
+      let { goodDetails }=this.props
+      let { color, size} = this.state
+      let data = {
+        good_num:1,
+        img:this.state.baseUrl+goodDetails.previewImages[0].imageUrl,
+        market_price:goodDetails.max_market_price,
+        title:goodDetails.longTitle,
+        vip_price:goodDetails.max_vipshop_price,
+        color,
+        size
+      }
+      this.props.getGoods(data)
+      Toast.success('添加成功', 1);
+      this.props.history.push('/cart')
+    }else{
+      Toast.fail('size不能为空', 1);
     }
-    this.props.getGoods(data)
   }
+
   render() {
     let { goodDetails,goodSize } = this.props
     // console.log(goodDetails)
     let { baseUrl,show,initIdx,initSizeIdx } = this.state
     return (
-      <div className="detail" ref="bodyBox2" onScroll={this.showBtn.bind(this)}>
+      <div className="detail" ref={this.scrollBox} onScroll={this.showBtn.bind(this)}>
         {/* 返回顶部 */}
         {show && <div className="back-top" onClick={this.scrollToTop.bind(this)}>
           <i className="iconfont icon-xiangshangjiantou"></i>
@@ -242,7 +260,7 @@ class Detail extends Component {
             <span>颜色</span>
             <div className="grid-select">
               {goodSize.length&&goodSize[1].values.map((ele,index)=>(
-                <div className={initIdx===index?'grid-option checked':'grid-option'} key={ele.id} onClick={this.handleColorChecked.bind(this,index)}>
+                <div className={initIdx===index?'grid-option checked':'grid-option'} key={ele.id} onClick={this.handleColorChecked.bind(this,index,ele.name)}>
                   <img src={baseUrl+ele.icon.imageUrl} alt=""/>
                   <span>{ele.name}</span>
                   {initIdx===index&&<i className="iconfont icon-xuanzejiaobiao"></i>}
@@ -258,7 +276,7 @@ class Detail extends Component {
             </div>
             <div className="grid-select">
               {goodSize.length&&goodSize[0].values.map((ele,index)=>(
-                <div className={index===initSizeIdx?'grid-option checked':'grid-option'} key={ele.id} onClick={this.handleSizeChecked.bind(this,index)}>{ele.name}
+                <div className={index===initSizeIdx?'grid-option checked':'grid-option'} key={ele.id} onClick={this.handleSizeChecked.bind(this,index,ele.name)}>{ele.name}
                 {index===initSizeIdx&&<i className="iconfont icon-xuanzejiaobiao"></i>}
                 </div>
               ))}
