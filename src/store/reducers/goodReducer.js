@@ -27,9 +27,8 @@ export default function goodReducer(state=initState,action){
     //深复制
     let newState = JSON.parse(JSON.stringify(state))
     switch (action.type) {
-
         case GET_GOOD_LIST:
-          console.log(action)
+         
           newState.goodInitList = action.payload.current_node.children
           newState.goodChooseList = action.payload.cate_lv1
           return newState;
@@ -39,13 +38,11 @@ export default function goodReducer(state=initState,action){
           return newState
         case GOOD_DETAIL:
           newState.goodDetails = action.payload
-          console.log(newState.goodDetails)
+         
           return newState;
-
         case GOOD_UPD:
             newState.goods.push(action.payload)
             return newState
-
         case GOOD_ADD:  //加
             newState.goods[action.payload].good_num++
             return newState
@@ -55,7 +52,7 @@ export default function goodReducer(state=initState,action){
             return newState
             
         case GOOD_DEL:  //删除
-            console.log(action.payload)
+       
             newState.goods.splice(action.payload,1)
             return newState
 
@@ -68,7 +65,7 @@ export default function goodReducer(state=initState,action){
             
         case GOOD_SIZE_COLOR:
           newState.goodSize = action.payload
-          console.log(newState.goodSize)
+       
           return newState
         default:
           return state

@@ -1,11 +1,9 @@
-
 import{
   GOOD_ADD,
   GOOD_SUB,
   GOOD_UPD,
   GOOD_DEL,
   TIME,
-  GOOD_COUNT,
   GET_GOOD_LIST,
   GOOD_CHILD_UPD,
   GOOD_DETAIL,
@@ -36,7 +34,7 @@ export function getgoodlist(params){
 export function getDetailList(params){
   return function(dispatch){
     getClassDetail(params).then(res=>{
-      console.log(res)
+
       dispatch({
         type:GOOD_CHILD_UPD,
         payload:res.data

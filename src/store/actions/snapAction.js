@@ -9,7 +9,7 @@ export function getSnapLeft(params){
                 type:FENQLEFT,
                 payload:res.data.data.elevator_list
             })
-            // console.log(res.data.data.elevator_list[0].brandIds)
+
         })
     }
 }

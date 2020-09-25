@@ -160,3 +160,26 @@ export function fetchList(params){
         params
     })
 }
+// 搜索导航列表
+export function fetchNavList(params){
+    return fetch({
+        url:"http://localhost:8080/vips-mobile/rest/shopping/search/recommend/label/v2",
+        methods:"GET",
+        params
+    })
+}
+
+// 搜索导航
+export function fetchVIEW(params){
+    return fetch({
+        url:"/vips-mobile/rest/shopping/wxapp/product/module/list/v2",
+        methods:"GET",
+        params
+    })
+}
+
+
+
+// export default {
+//     axiosGoodDetails
+// }

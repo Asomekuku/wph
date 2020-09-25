@@ -80,13 +80,23 @@ class Home extends React.Component {
 
   // 切换标题栏的高亮样式
   activeClick = (i) => {
-    if(i===1){
+    if(i!==0){
       this.props.history.push("/snap")
     }
     this.setState({
       active: i,
     });
   };
+  // 大卖特区跳转
+  BuyClick=(i) => {
+    let arr=[52040664,52287217,52044501]
+    this.props.history.push('good/goodlist/'+arr[i])
+  }
+  // 唯品快抢
+  VIPClick=(i) => {
+    let arr=[1397000998455366,806646477235725,6917935099807999005,2159226586]
+    this.props.history.push('good/detail/'+arr[i])
+  }
   // 菜单显示页面弹窗
   HomeShowClick = (params) => {
     this.setState({
@@ -310,7 +320,7 @@ class Home extends React.Component {
           </div>
           {/* 导航栏 */}
           <div className="homeNavImg">
-            {Navs.length != 0 &&
+            {Navs.length !== 0 &&
               Navs[0].img.map((v, i) => (
                 <div
                   className="homeNavImg-item"
@@ -321,7 +331,7 @@ class Home extends React.Component {
                 ></div>
               ))}
             <div className="nav-item">
-              {Navs.length != 0 &&
+              {Navs.length !== 0 &&
                 Navs[0].arr.map((c, i) => (
                   <div className="img-item" key={c.data.id}>
                     <img
@@ -352,7 +362,7 @@ class Home extends React.Component {
             {/* 商品 */}
             <div className="homeBuy-shop">
               {data.bigSale.shop.map((v, i) => (
-                <img src={v} key={i} alt="" />
+                <img src={v} key={i} alt="" onClick={this.BuyClick.bind(this,i)}/>
               ))}
             </div>
           </div>
@@ -372,7 +382,7 @@ class Home extends React.Component {
               {data.VIP.shop.map((v, i) => {
                 return (
                   <div className="VipShop-item" key={i}>
-                    <img src={v.img} alt="" />
+                    <img src={v.img} alt="" onClick={this.VIPClick.bind(this,i)}/>
                     <p>{v.text}</p>
                     <span>￥{v.price}</span>
                   </div>

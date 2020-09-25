@@ -86,7 +86,6 @@ export function getHomeNav(params) {
         let img1=res.data.data.floor_list[3].data.operation_data.data.backgroundPic
         let arr1=res.data.data.floor_list[3].data.operation_data.data.block[0].child
         let arr3=[...arr,...arr1]
-        console.log(arr3)
         let ImgArr=[{img:[img,img1],arr:arr3}]
         //第二次dispatch
         dispatch({

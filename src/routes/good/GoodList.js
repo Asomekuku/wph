@@ -29,7 +29,7 @@ class GoodList extends Component {
 
   }
   componentDidMount(){
-    console.log(this.props)
+    
     let group_id = this.props.match.params.group_id
     let params = {
       pageId: 10000287,
@@ -90,7 +90,7 @@ class GoodList extends Component {
   scrollRquest(){
     //触底事件
     // console.log(goodDetailData)
-    console.log(this.props)
+  
     // let { goodDetailData } = this.props
     let scrollHeight = this.requestData.current.scrollHeight  //文档内容实际高度
     let clientHeight = this.requestData.current.clientHeight  //窗口可视范围高度
@@ -98,7 +98,7 @@ class GoodList extends Component {
     let distance = scrollHeight - clientHeight - scrollTop //距离到底距离
     if(distance < 100 ){
       // console.log(goodDetailData)
-      console.log(this.props)
+    
     }
   }
   handleDetail(goodsId){
@@ -109,7 +109,7 @@ class GoodList extends Component {
   }
   render() {
     let { goodDetailList,goodDetailData } = this.props
-    console.log(goodDetailList,goodDetailData)
+  
     return (
       <div className="goodlist" ref={this.requestData}>
         {this.createDetail(goodDetailList)}

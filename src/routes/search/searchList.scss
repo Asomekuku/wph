@@ -1,0 +1,241 @@
+@mixin flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SearchTabbar {
+    position: sticky;
+    background: #fff;
+    top:-0.013333rem;
+    width: 100%;
+    display: flex;
+    height: 1.066667rem;
+    &>div:nth-child(1) {
+        width: 10%;
+        height: 1.066667rem;
+        text-align: center;
+        line-height: 1.066667rem;
+        margin-left: 0.3rem;
+
+        &>i {
+            font-size: 0.666667rem;
+        }
+    }
+
+    &>div:nth-child(2) {
+        box-sizing: border-box;
+        margin-left: 0.266667rem;
+        width: 75%;
+        height: 0.8rem;
+
+        >input {
+            width: 100%;
+            margin-top: 0.1rem;
+            height: 0.8rem;
+            border-radius: 0.42rem;
+            border: 1px solid #ddd;
+            font-size: 0.3rem;
+            text-indent: 0.4rem;
+            background: #F3F4F5;
+        }
+
+    }
+
+    &>div:nth-child(3) {
+        width: 10%;
+        height: 1.066667rem;
+        text-align: center;
+        line-height: 1rem;
+        margin: 0px 0.266667rem;
+
+        &>i {
+            font-size: 0.666667rem;
+        }
+    }
+}
+
+.SearchList {
+    ul {
+        @include flex();
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.266667rem;
+
+        li {
+            height: 1.333333rem;
+            font-size: 0.4rem;
+            width: 100%;
+            line-height: 1.333333rem;
+        }
+
+        li:hover {
+            background: #ddd;
+        }
+    }
+}
+
+.searchList-content {
+    overflow: hidden;
+    .searchList-cont {
+        @include flex();
+        padding: 0.266667rem;
+        background: #fff;
+
+        .NavList-item {
+            border-right: 1px solid #ddd;
+            padding: 0px 0.533333rem;
+
+            i {
+                font-size: 0.266667rem;
+                margin-left: 0.266667rem;
+                color: #AEB0B4;
+            }
+        }
+
+        .NavList-item:last-child {
+            border: none;
+        }
+    }
+}
+
+.searchList-Nav {
+    width: 10rem;
+    overflow: hidden;
+    margin-top: 0.266667rem;
+
+    .searchNav {
+        @include flex();
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: auto;
+
+        .NavItem {
+            @include flex();
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+            margin: 0px 0.266667rem;
+
+            img {
+                padding-top: 0.4rem;
+                width: 2rem;
+                height: 1.2rem;
+                margin-bottom: 0.266667rem;
+            }
+        }
+    }
+}
+
+.searchList-text {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    height: 100%;
+
+    .product-item-inner {
+        width: 176px;
+        height: 278px;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        float: left;
+
+        .product-img-box {
+            width: 176px;
+            height: 176px;
+
+            &>img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .product-info {
+            box-sizing: border-box;
+            width: 176px;
+            height: 102px;
+            padding: 0 0.05rem;
+            background: #fff;
+
+            .product-price {
+                width: 100%;
+                height: 35px;
+                line-height: 35px;
+
+                .tag {
+                    background: linear-gradient(90deg, #f03867, #cb78dc);
+                    font-size: 0.26666666666666666rem;
+                    height: 0.39999999999999997rem;
+                    line-height: 0.39999999999999997rem;
+                    padding: 0 0.10666666666666666rem;
+                    color: #fff;
+                    border-radius: 0.21333333333333332rem;
+                }
+
+                .nowprice {
+                    font-weight: 700;
+                    font-family: PingFangSC-Medium;
+                    vertical-align: bottom;
+                    color: #222;
+                }
+
+                .delprice {
+                    font-size: 0.29333333333333333rem;
+                    color: #98989f;
+                    text-decoration: line-through;
+                }
+
+                .discount {
+                    font-size: 0.29333333333333333rem;
+                    color: #98989f;
+                    margin-left: 0.05rem;
+                }
+            }
+
+            .product-msg-box {
+                width: 100%;
+
+                .product-name {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    color: #585c64;
+                    width: 100%;
+                }
+
+                .product-atmosphere {
+                    font-family: PingFangSC-Regular;
+                    width: 100%;
+                    padding-top: 0.21333333333333332rem;
+                    font-size: 0.29333333333333333rem;
+                    color: #98989f;
+                    line-height: 0.29333333333333333rem;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+//回到顶部
+.homeCartUp {
+    position: fixed;
+    right: 0.4rem;
+    bottom: 0.666667rem;
+    width: 1.2rem;
+    z-index: 5;
+    height: 1.2rem;
+    background: black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.2rem;
+
+    >i {
+        font-size: 0.533333rem;
+        color: #fff;
+    }
+}

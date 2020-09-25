@@ -66,7 +66,7 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
             mobile:this.state.userName
         }).then(res=>{
             if(res.data.msg==='发送成功'){
-                console.log(res)
+               
                 this.setState({
                     
                     disabled:false
@@ -100,6 +100,10 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
       signSuccess() {
         Toast.success('登录成功,即将跳转首页', 1);
       }
+      //登录失败
+      failToast() {
+        Toast.fail('登录失败,账号密码错误', 1);
+      }
       //登录按钮
       sign=()=>{
          
@@ -107,7 +111,6 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
             username:this.state.userName,
             password:this.state.passWord
           }).then(res=>{
-              console.log(res)
               if(res.data.msg==='登录成功'){
                 localStorage.setItem('token',JSON.stringify(res.data.wdata.oauth_token))
                 localStorage.setItem('username',res.data.wdata.username)
@@ -116,6 +119,8 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
                   this.props.history.push('/home')
                 },1000)
                 
+              }else{
+                this.failToast()
               }
           })
       }
@@ -187,7 +192,7 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
                             ref={el => this.inputRef = el}
                         >密码</InputItem>
                         <Button type="primary" onClick={this.regi.bind(this)} disabled={disabled}>手机号注册登录</Button><WhiteSpace />
-                        <img className='img' onClick={this.iscut.bind(this)} src={passimg} alt=''/>
+                        <img className='imgIMG' onClick={this.iscut.bind(this)} src={passimg} alt=''/>
 
                     </List>                
                 </div>

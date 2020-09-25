@@ -30,6 +30,11 @@ const Obligation = loadable(()=>import('./my/obligation'))
                 id:1001,
                 path:'/search',
                 component:loadable(()=>import('./search/search'))
+            },
+            {
+                id:1002,
+                path:'/searchList/:keys',
+                component:loadable(()=>import('./search/searchList'))
             }
         ]
     },

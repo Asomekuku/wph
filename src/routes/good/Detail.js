@@ -9,6 +9,8 @@ function mapStateToProps(store){
   return{
     goodDetails:store.good.goodDetails,
     goodSize:store.good.goodSize,
+    goods:store.good.goods,
+
   }
 }
 //把action生成器方法，映射到props上面
@@ -140,7 +142,7 @@ class Detail extends Component {
   }
   //颜色点击切换
   handleColorChecked(index,name){
-    console.log(name)
+  
     this.setState({
       initIdx:index,
       color:name
@@ -148,7 +150,7 @@ class Detail extends Component {
   }
   //size点击切换
   handleSizeChecked(index,size){
-    console.log(size)
+   
     this.setState({
       initSizeIdx:index,
       size:size
@@ -163,7 +165,7 @@ class Detail extends Component {
   addGoods(){
     let { size } = this.state
     if(size !== ''){
-      console.log(this.props.goodDetails)
+     
       let { goodDetails }=this.props
       let { color, size} = this.state
       let data = {
@@ -400,7 +402,7 @@ class Detail extends Component {
         <div className="product-cart">
           <i className="iconfont icon-kefu"></i>
           <div className="shop-cart" onClick={this.goCart.bind(this)}>
-          <i className="iconfont icon-gouwuche"></i>
+          <i className={this.props.goods.length!==0?"iconfont icon-gouwuche add":"iconfont icon-gouwuche"}></i>
           </div>
           <div className="add-cart" onClick={this.addGoods.bind(this)}>加入购物车</div>
         </div>

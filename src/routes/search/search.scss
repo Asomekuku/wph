@@ -190,6 +190,10 @@
         li{
             height:1.333333rem;
             font-size: 0.4rem;
+            width:100%
+        }
+        li:hover{
+            background: #ddd;
         }
     }
 }

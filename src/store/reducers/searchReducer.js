@@ -1,8 +1,10 @@
-import { GET_SEARCH_HOST, GET_SEARCH_LIST } from "../actionType";
+import { GET_SEARCH_HOST, GET_SEARCH_LIST,GET_SEARCH_NAV,GET_SEARCH_VIEW } from "../actionType";
 
 const searchState = {
   hostList: [],
   changeList: [],
+  NavList:[],
+  contentList:[]
 };
 
 export default function (state = searchState, action) {
@@ -14,6 +16,9 @@ export default function (state = searchState, action) {
     case GET_SEARCH_LIST:
       newState.changeList = action.payload;
       return newState;
+      case GET_SEARCH_NAV:
+        newState.NavList = action.payload;
+        return newState;
     default:
       return state;
   }
