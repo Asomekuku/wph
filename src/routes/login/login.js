@@ -5,7 +5,7 @@ import passimg from '@/assets/image/passimg.png'
 import './login.scss'
 import {withRouter} from 'react-router-dom' 
 import { Button, WhiteSpace} from 'antd-mobile'
-import { List, InputItem , Toast } from 'antd-mobile'
+import { List, InputItem , Toast ,  WingBlank } from 'antd-mobile'
 import {getMobileCode , createUser , loginCheck } from '@/utils/api'
  class Login extends React.Component{
      constructor(props){
@@ -46,6 +46,7 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
         })
         
     }
+ 
     //密码
     onChangePwd=(value)=>{
         
@@ -96,6 +97,9 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
     successToast=()=> {
         Toast.success('恭喜您，注册成功,请前往首页登录', 1);
       }
+      signSuccess() {
+        Toast.success('登录成功,即将跳转首页', 1);
+      }
       //登录按钮
       sign=()=>{
          
@@ -107,7 +111,10 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
               if(res.data.msg==='登录成功'){
                 localStorage.setItem('token',JSON.stringify(res.data.wdata.oauth_token))
                 localStorage.setItem('username',res.data.wdata.username)
+                this.signSuccess()
+                setTimeout(()=>{
                   this.props.history.push('/home')
+                },1000)
                 
               }
           })
@@ -180,8 +187,9 @@ import {getMobileCode , createUser , loginCheck } from '@/utils/api'
                             ref={el => this.inputRef = el}
                         >密码</InputItem>
                         <Button type="primary" onClick={this.regi.bind(this)} disabled={disabled}>手机号注册登录</Button><WhiteSpace />
+                        <img className='img' onClick={this.iscut.bind(this)} src={passimg} alt=''/>
+
                     </List>                
-                    <img className='img' onClick={this.iscut.bind(this)} src={passimg} alt=''/>
                 </div>
             </div>
         )

@@ -14,6 +14,7 @@ const initState = {
   goodInitList:[],
   goodChooseList:[],
   goodDetailList:[],
+  goodDetailData:[],
   goodDetails:'',
   goodSize:[],
   goods:[],
@@ -32,7 +33,8 @@ export default function goodReducer(state=initState,action){
           newState.goodChooseList = action.payload.cate_lv1
           return newState;
         case GOOD_CHILD_UPD:
-          newState.goodDetailList = action.payload
+          newState.goodDetailList = action.payload.items
+          newState.goodDetailData = action.payload.goodsList
           return newState
         case GOOD_DETAIL:
           newState.goodDetails = action.payload
@@ -60,6 +62,7 @@ export default function goodReducer(state=initState,action){
             newState.second = parseInt(newState.date%60)
             // console.log(`多少分${newState.minute}多少秒${newState.second}`)
             return newState
+            
         case GOOD_SIZE_COLOR:
           newState.goodSize = action.payload
           console.log(newState.goodSize)

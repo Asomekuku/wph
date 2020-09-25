@@ -37,7 +37,7 @@ export function getDetailList(params){
       console.log(res)
       dispatch({
         type:GOOD_CHILD_UPD,
-        payload:res.data.items
+        payload:res.data
       })
     }).catch(()=>{
       dispatch({

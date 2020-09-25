@@ -1,0 +1,67 @@
+.screen{
+    height: 42px;
+
+    display: flex;
+    justify-content: space-between;
+    &>div{
+        background: #ffffff;
+        width: 100%;
+        border-right: 1px solid #cccccc;
+        text-align: center;
+        line-height: 42px;
+    }
+    &>div:nth-child(4){
+        border-right: none;
+
+    }
+    
+}
+// 内容
+.content{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &>div{
+        width: 48%;
+        height: 333px;
+        background: #ffffff;
+       
+        &>img{
+            height: 225px;
+            width: 100%;
+        }
+       .price{
+           margin-top: 10px;
+           margin-bottom: 10px;
+            display: flex;
+            justify-content: space-around;
+            &>span:nth-child(1){
+                display: block;
+                width: 44px;
+                background-color: #ffffff;
+                border-radius: 10px;
+                font-size: 12px;
+                text-align: center;
+            }
+            &>span:nth-child(2){
+                font-weight: bold;
+            }
+            &>span:nth-child(3){
+                text-decoration: line-through;
+                color: #cccccc;
+            }
+            &>span:nth-child(4){
+                color: #cccccc;
+            }
+        }
+        .text{
+            width: 80%;       
+            margin: auto;
+        }
+       
+    }
+}
+.gif{
+    width: 100%;
+    
+}
