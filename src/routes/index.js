@@ -10,6 +10,7 @@ const Login = loadable(()=>import('./login/login'))
 const Detail = loadable(()=>import('./good/Detail.js'))
 const GoodList = loadable(()=>import('./good/GoodList'))
 const Snap = loadable(()=>import('./snap/snap'))
+const SnapChild = loadable(()=>import('./anspChild/anspChild'))
  const routes = [
     {
         id:1,
@@ -79,6 +80,11 @@ const Snap = loadable(()=>import('./snap/snap'))
         id:121,
         path:'/snap',
         component:Snap
+    },
+    {
+        id:99,
+        path:'/snapchild/:index',
+        component:SnapChild
     }
 ]
 

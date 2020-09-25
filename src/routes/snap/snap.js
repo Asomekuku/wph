@@ -2,24 +2,24 @@ import React from 'react'
 import {getSnapLeft , getSnap ,snapList} from '../../store/actions/snapAction'
 import './snap.scss'
 import {connect} from 'react-redux'
-
+import {withRouter} from 'react-router-dom'
 class Snap extends React.Component{
     constructor(props){
         super(props)
         this.state={  
             changeTypeNum:0,
-            index:0,//导航下标
-            
+            index:0,//导航下标  
+   
         }
+     
     }
     componentDidMount(){
         //左边导航 
-        this.SnapLeftFn()    
+        this.SnapLeftFn()  //左导航
         this.fenqFN()  //内容
-       
-     
     }
-   
+    
+    
     //fenqFN
     fenqFN(arr){
         //接口
@@ -87,22 +87,26 @@ class Snap extends React.Component{
     //点击导航
     click(idx){
      
-        this.setState(state=>({index:idx}))
        if(this.props.spanLeftList.length){ 
                 //滚轮向下滚动，渲染数据
                 let arr=this.props.spanLeftList[idx].brandIds    //获取相应的id
                 arr=arr.split(',')   //转数组
-                let arr1=arr.slice(0,30) //数据
+                this.state.num ? this.setState(state=>({num:state.num}))  : this.setState(state=>({num:10}))
+
+                let arr1=arr.slice(0,30) //数据   
                 //调接口
                 this.fenqFN(arr1)
-            
+                 this.setState(state=>({index:idx}))
+
         }
     }
     //创建右边内容
     createSnapList(){
         if(true){
-            return this.props.fengqList.map(ele=>(      
-                <div key={ele.brand.brand_image}>
+            return this.props.fengqList.map((ele,index)=>(      
+                <div key={ele.brand.brand_image}
+                    onClick={this.gosnapChild.bind(this,index)}
+                >
                     <img src={ele.brand.square_image} alt=''/>
                     <img src={ele.brand.logo} alt=''/>
                     <div>{ele.brand.product_count}款新货</div>
@@ -115,13 +119,13 @@ class Snap extends React.Component{
         }
      
     }
- 
+    //去到子页面
+    gosnapChild(index){
+        this.props.history.push('/snapchild/'+index)
+    }
    
     render(){
        let {index} = this.state
-       console.log(this.props.spanLeftList)
-       console.log(this.props.fengqList)
-       let i=0
        let {spanLeftList} = this.props
       
         return(
@@ -140,10 +144,13 @@ class Snap extends React.Component{
                         
                     </div>
                     {/* //右 */}
-                    <div className='two'>
+                    <div className='two'
+                        
+                    >
                         <p>{spanLeftList.length ? spanLeftList[index].tab_name : ''}</p>
                         {/* 右边内容 */}
                         {this.createSnapList()}
+                        
                     </div>
 
                 </div>
@@ -164,4 +171,4 @@ function mapAction(dispatch){
         getsnapList:(params)=>dispatch(snapList(params))
     }
 }
-export default connect(mapState,mapAction)(Snap)
+export default connect(mapState,mapAction)(withRouter(Snap))

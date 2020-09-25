@@ -3,6 +3,7 @@ import { LeftOutlined , HomeOutlined , WalletOutlined ,SolutionOutlined , Layout
 import myVip from "../../assets/image/myVip.png"
 import './my.scss'
 import { List } from 'antd-mobile'
+import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile'
 import {logout} from '@/utils/api'
 import {withRouter} from 'react-router-dom'
 const Item = List.Item;
@@ -45,10 +46,14 @@ const Item = List.Item;
             </Item>
         ))
     }
+    //退出成功提示
+    successToast() {
+        Toast.success('退出成功', 1);
+      }
     //退出
     out(){
         let token =JSON.parse(localStorage.getItem('token'))
-       
+       //退出接口
         logout({
             oauth_token:token
         }).then(res=>{
@@ -59,6 +64,7 @@ const Item = List.Item;
                 this.setState({
                     bol:false
                 })
+                this.successToast()
             }
         })
     }
