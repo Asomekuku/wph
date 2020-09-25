@@ -12,7 +12,7 @@ import{
   GOOD_SIZE_COLOR,
 } from '../actionType'
 
-import { getClassify,getClassDetail,axiosGoodDetails,getDetails,getSizeColor } from '@/utils/api'
+import { getClassify,getClassDetail,getDetails,getSizeColor } from '@/utils/api'
 
 
 //获取商品列表分类
@@ -39,7 +39,7 @@ export function getDetailList(params){
       console.log(res)
       dispatch({
         type:GOOD_CHILD_UPD,
-        payload:res.data.items
+        payload:res.data
       })
     }).catch(()=>{
       dispatch({

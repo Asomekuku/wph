@@ -37,15 +37,6 @@ export function getSizeColor(params){
   })
 }
 
-// 获取商品详情 monkey
-export function axiosGoodDetails(params){
-    return fetch({
-        url:'http://api.tbk.dingdanxia.com/vip/item_info',
-        method:'GET',
-        params
-    })
-}
-
 //获取导航分类
 export function fetchCatItems(params){
     return axios({
@@ -168,7 +159,4 @@ export function fetchList(params){
         methods:"GET",
         params
     })
-}
-export default {
-    axiosGoodDetails
 }

@@ -7,7 +7,8 @@ import { connect } from 'react-redux'
 //共享state中的数据，可以用this.props进行访问
 function mapStateToProps(store){
   return{
-    goodDetailList:store.good.goodDetailList
+    goodDetailList:store.good.goodDetailList,
+    goodDetailData:store.good.goodDetailData,
   }
 }
 //把action生成器方法，映射到props上面
@@ -18,7 +19,17 @@ function mapActionToProps(dispatch){
   }
 }
 class GoodList extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      dataIdx : 0,
+      pageSize:30,
+    }
+    this.requestData = React.createRef()
+
+  }
   componentDidMount(){
+    console.log(this.props)
     let group_id = this.props.match.params.group_id
     let params = {
       pageId: 10000287,
@@ -46,7 +57,9 @@ class GoodList extends Component {
       mobile_platform: 2,
     }
     this.props.detailInit(params)
+    this.requestData.current.addEventListener('scroll',this.scrollRquest())
   }
+  
   //渲染列表页面
   createDetail(data){
     if(data&&data.length){
@@ -74,15 +87,31 @@ class GoodList extends Component {
       ))
     }   
   }
-  
+  scrollRquest(){
+    //触底事件
+    // console.log(goodDetailData)
+    console.log(this.props)
+    // let { goodDetailData } = this.props
+    let scrollHeight = this.requestData.current.scrollHeight  //文档内容实际高度
+    let clientHeight = this.requestData.current.clientHeight  //窗口可视范围高度
+    let scrollTop = this.requestData.current.scrollTop  //滚动条滚动距离
+    let distance = scrollHeight - clientHeight - scrollTop //距离到底距离
+    if(distance < 100 ){
+      // console.log(goodDetailData)
+      console.log(this.props)
+    }
+  }
   handleDetail(goodsId){
     this.props.history.push('/good/detail/'+ goodsId)
   }
+  componentWillUnmount() {
+    this.requestData.current.removeEventListener('scroll', this.scrollRquest);
+  }
   render() {
-    let { goodDetailList } = this.props
-    console.log(goodDetailList)
+    let { goodDetailList,goodDetailData } = this.props
+    console.log(goodDetailList,goodDetailData)
     return (
-      <div className="goodlist">
+      <div className="goodlist" ref={this.requestData}>
         {this.createDetail(goodDetailList)}
       </div>
 
