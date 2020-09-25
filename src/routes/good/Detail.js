@@ -32,7 +32,7 @@ class Detail extends Component {
       iconColor:false,
       iconSize:false,
       initIdx:0,
-      initSizeIdx:'',
+      initSizeIdx:0,
       modal2: false,
     }
   }
@@ -155,13 +155,17 @@ class Detail extends Component {
   }
   addGoods(){
     console.log(this.props.goodDetails)
-    let { goodDetails }=this.props
+    let { goodDetails,goodSize }=this.props
+    let good_color = goodSize[1].values[this.state.initIdx].name
+    let good_size = goodSize[0].values[this.state.initSizeIdx].name
     let data = {
       good_num:1,
       img:this.state.baseUrl+goodDetails.previewImages[0].imageUrl,
       market_price:goodDetails.max_market_price,
       title:goodDetails.longTitle,
-      vip_price:goodDetails.max_vipshop_price
+      vip_price:goodDetails.max_vipshop_price,
+      good_size,
+      good_color
     }
     this.props.getGoods(data)
   }

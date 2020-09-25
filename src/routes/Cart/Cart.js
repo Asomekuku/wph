@@ -64,7 +64,7 @@ class Cart extends React.Component{
     }
     //根据数据生成商品
     createShopCart(){
-        // console.log(this.props.goods)
+        console.log(this.props.goods)
         return this.props.goods.map((ele,idx)=>(
             <div key={idx} className="cart_good">
                 <div>
@@ -72,7 +72,7 @@ class Cart extends React.Component{
                 </div>
                 <ul>
                     <li>{ele.title}</li>
-                    <li>规格xxxxxxxx</li>
+                    <li>商品颜色: {ele.good_color} 商品尺码: {ele.good_size}</li>
                     <li>
                         <em>7天可退</em><em>退换无忧</em>
                     </li>
