@@ -10,6 +10,8 @@ function mapStateToProps(store){
   return{
     goodDetails:store.good.goodDetails,
     goodSize:store.good.goodSize,
+    goods:store.good.goods,
+
   }
 }
 //把action生成器方法，映射到props上面
@@ -154,7 +156,6 @@ class Detail extends Component {
     });
   }
   addGoods(){
-    console.log(this.props.goodDetails)
     let { goodDetails }=this.props
     let data = {
       good_num:1,
@@ -382,7 +383,7 @@ class Detail extends Component {
         <div className="product-cart">
           <i className="iconfont icon-kefu"></i>
           <div className="shop-cart" onClick={this.goCart.bind(this)}>
-          <i className="iconfont icon-gouwuche"></i>
+          <i className={this.props.goods.length!==0?"iconfont icon-gouwuche add":"iconfont icon-gouwuche"}></i>
           </div>
           <div className="add-cart" onClick={this.addGoods.bind(this)}>加入购物车</div>
         </div>

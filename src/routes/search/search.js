@@ -1,3 +1,4 @@
+
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./search.scss";
@@ -84,9 +85,9 @@ class SearchBar extends React.Component {
       // 判断是否有local
       let history = JSON.parse(localStorage.getItem("history") || "[]");
       // 是否有值，有的话直接将其付给arr
-      if (history.length != 0) {
+      if (history.length !== 0) {
         let bol = history.every((v) => {
-          if (v != this.state.search) {
+          if (v !== this.state.search) {
             return v;
           }
         });
@@ -111,15 +112,28 @@ class SearchBar extends React.Component {
       });
     }
   };
+  // 
+  HandleClick=() => {
+    this.props.history.push("/searchList/"+this.state.search)
+  }
+  
   // 搜索框的enter提交事件
   SearchInput = (e) => {
     if (e.keyCode === 13) {
       this.localHan();
+      this.setState({
+        search:e.target.value
+      })
+      this.props.history.push("/searchList/"+this.state.search)
     }
   };
   // 搜索点击事件
   SearchClick = () => {
     this.localHan();
+    this.setState({
+      search:this.state.search
+    })
+    this.props.history.push("/searchList/"+this.state.search)
   };
   //   清除历史记录
   removeLocal = () => {
@@ -132,7 +146,7 @@ class SearchBar extends React.Component {
   componentDidMount() {
     let history = JSON.parse(localStorage.getItem("history") || "[]");
     // 是否有值，有的话直接将其付给arr
-    if (history.length != 0) {
+    if (history.length !== 0) {
       this.setState({
         arr: history,
       });
@@ -218,7 +232,7 @@ class SearchBar extends React.Component {
           <div className="SearchList">
             <ul>
               {this.props.changeList&&this.props.changeList.map((v,i)=>(
-                <li key={i} onClick={()=>{this.props.history.push("/good/goodlist/v.id")}}>{v.word}</li>
+                <li key={i} onClick={this.HandleClick}>{v.word}</li>
               ))}
             </ul>
           </div>

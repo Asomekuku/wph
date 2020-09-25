@@ -26,7 +26,6 @@ export default function goodReducer(state=initState,action){
     //深复制
     let newState = JSON.parse(JSON.stringify(state))
     switch (action.type) {
-
         case GET_GOOD_LIST:
           console.log(action)
           newState.goodInitList = action.payload.current_node.children
@@ -39,11 +38,9 @@ export default function goodReducer(state=initState,action){
           newState.goodDetails = action.payload
           console.log(newState.goodDetails)
           return newState;
-
         case GOOD_UPD:
             newState.goods.push(action.payload)
             return newState
-
         case GOOD_ADD:  //加
             newState.goods[action.payload].good_num++
             return newState

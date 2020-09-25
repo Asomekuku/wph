@@ -1,18 +1,16 @@
-
 import{
   GOOD_ADD,
   GOOD_SUB,
   GOOD_UPD,
   GOOD_DEL,
   TIME,
-  GOOD_COUNT,
   GET_GOOD_LIST,
   GOOD_CHILD_UPD,
   GOOD_DETAIL,
   GOOD_SIZE_COLOR,
 } from '../actionType'
 
-import { getClassify,getClassDetail,axiosGoodDetails,getDetails,getSizeColor } from '@/utils/api'
+import { getClassify,getClassDetail,getDetails,getSizeColor } from '@/utils/api'
 
 
 //获取商品列表分类

@@ -28,6 +28,11 @@ const Snap = loadable(()=>import('./snap/snap'))
                 id:1001,
                 path:'/search',
                 component:loadable(()=>import('./search/search'))
+            },
+            {
+                id:1002,
+                path:'/searchList/:keys',
+                component:loadable(()=>import('./search/searchList'))
             }
         ]
     },
