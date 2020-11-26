@@ -1,8 +1,10 @@
 import React from 'react'
 import {getSnapLeft , getSnap ,snapList} from '../../store/actions/snapAction'
+import LazyLoad, { lazyload } from 'react-lazyload'
 import './snap.scss'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
+
 class Snap extends React.Component{
     constructor(props){
         super(props)
@@ -93,9 +95,9 @@ class Snap extends React.Component{
                 arr=arr.split(',')   //转数组
                 this.state.num ? this.setState(state=>({num:state.num}))  : this.setState(state=>({num:10}))
 
-                let arr1=arr.slice(0,30) //数据   
+                // let arr1=arr.slice(0,30) //数据   
                 //调接口
-                this.fenqFN(arr1)
+                this.fenqFN(arr)
                  this.setState(state=>({index:idx}))
 
         }
@@ -103,22 +105,32 @@ class Snap extends React.Component{
     //创建右边内容
     createSnapList(){
         if(true){
-            return this.props.fengqList.map((ele,index)=>(      
-                <div key={ele.brand.brand_image}
-                    onClick={this.gosnapChild.bind(this,index)}
-                >
-                    <img src={ele.brand.square_image} alt=''/>
-                    <img src={ele.brand.logo} alt=''/>
-                    <div>{ele.brand.product_count}款新货</div>
-                    <span>
-                        {ele.goodsName}
-                    </span>
-                </div>
+            return this.props.fengqList.map((ele,index)=>(     
+                
+                    <div key={ele.brand.brand_image}
+                        onClick={this.gosnapChild.bind(this,index)}
+                    >
+                        <LazyLoad height={80} overflow={true}>
+                            <img src={ele.brand.square_image} alt=''/>
+                            <img src={ele.brand.logo} alt=''/>
+                        </LazyLoad>
+                        
+                        <div>{ele.brand.product_count}款新货</div>
+                        <span>
+                            {ele.goodsName}
+                        </span>
+                    </div>
+                
             ))
             
         }
      
     }
+    shouldComponentUpdate(a,b){
+        console.log(a,b)
+        return true
+    }
+    // </LazyLoad><LazyLoad height={200} overflow={true}> 
     //去到子页面
     gosnapChild(index){
         this.props.history.push('/snapchild/'+index)
@@ -127,7 +139,7 @@ class Snap extends React.Component{
     render(){
        let {index} = this.state
        let {spanLeftList} = this.props
-      
+      console.log(this.props)
         return(
             <div className='snap_box'>
                 {/* 上 */}

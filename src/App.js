@@ -36,7 +36,7 @@ class App extends React.Component {
     //装好了所有的路由在一并抛出
     return res
   }
-
+  
   render(){
     return (
       <HashRouter>

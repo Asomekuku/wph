@@ -57,7 +57,7 @@ const Item = List.Item;
         logout({
             oauth_token:token
         }).then(res=>{
-          
+            console.log(res)
             if(res.data.msg==='退出成功'){
                 localStorage.removeItem('token')
                 localStorage.removeItem('username')

@@ -40,44 +40,48 @@
             padding-top: 10px;
             text-align: center;
         }
-        &>div{
-            width: 95px;
-            float: left;
-            height: 152px;
-            background: #fff;
-            margin-left: 0.186667rem;
-            margin-top: 0.286667rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            &>img:nth-child(1){
-                width: 100%;
-                height: 88px;
-            }
-            &>img:nth-child(2){
-                width: 52px;
-                height: 26px;
-            }
-            &>span{
-                box-sizing: border-box;
-                padding-top: 10px;
-                display: -webkit-box;
-                word-break: break-all;
-                overflow: hidden;
-                max-height: 1.06667rem;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                text-overflow: ellipsis;
-            }
+        
             &>div{
-                width: 83px;
-                height: 15px;
-                text-align: center;
-                background: rgba(95,200,109,.2);
-                color: #17af2b;
-                border-radius: 10px;
+                width: 95px;
+                float: left;
+                height: 152px;
+                background: #fff;
+                margin-left: 0.186667rem;
+                margin-top: 0.286667rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+                img:nth-child(1){
+                    width: 100%;
+                    height: 88px;
+                }
+                img:nth-child(2){
+                    width: 52px;
+                    height: 26px;
+                }
+                &>span{
+                    box-sizing: border-box;
+                    padding-top: 10px;
+                    display: -webkit-box;
+                    word-break: break-all;
+                    overflow: hidden;
+                    max-height: 1.06667rem;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    text-overflow: ellipsis;
+                }
+                &>div{
+                    width: 83px;
+                    height: 15px;
+                    text-align: center;
+                    background: rgba(95,200,109,.2);
+                    color: #17af2b;
+                    border-radius: 10px;
+                }
             }
-        }
+        
+
     }
 }
